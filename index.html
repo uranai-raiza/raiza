@@ -6,7 +6,7 @@
     <title>RIZA - ミスティカルナビゲーション</title>
     <style>
         /* ==========================================================================
-           ベーススタイル（夜空の背景）
+           1. ベーススタイル（夜空の背景 ＆ 1.星空またたきモーション）
            ========================================================================== */
         body {
             margin: 0;
@@ -77,8 +77,10 @@
             color: #ffffff;
         }
 
-        /* メインコンテンツ */
-        .container {
+        /* ==========================================================================
+           2. ヒーローセクション（トップ画面）
+           ========================================================================== */
+        .hero-container {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -185,7 +187,7 @@
             background-repeat: no-repeat;
         }
 
-        /* ヒーローグラフィック領域 */
+        /* 2. アバター画像（丸枠）の「神秘的なオーラ」と「画像中央固定」 */
         .hero-graphic {
             flex: 0.8;
             display: flex;
@@ -193,7 +195,6 @@
             position: relative;
         }
 
-        /* 2. アバター画像（丸枠）の「神秘的なオーラ」と「画像中央固定」 */
         .avatar-frame {
             width: 360px;
             height: 360px;
@@ -207,7 +208,7 @@
             justify-content: center;
         }
 
-        /* 金の輪のアニメーション（優しく波打ちながら回転） */
+        /* 金の輪のアニメーション */
         .avatar-frame::before {
             content: "";
             position: absolute;
@@ -232,7 +233,6 @@
             border-radius: 50%;
             overflow: hidden;
             position: relative;
-            /* 中のイラスト自体を呼吸するようにわずかに拡大縮小 */
             animation: breathe 6s ease-in-out infinite alternate;
         }
 
@@ -241,16 +241,15 @@
             100% { transform: scale(1.03); }
         }
 
-        /* 【重要】ズレを完全に修正した画像配置設定 */
+        /* 【重要】ズレを完全に修正して中央に固定する記述 */
         .avatar-frame-inner img {
             width: 100% !important;
             height: 100% !important;
             object-fit: cover !important;
-            object-position: center center !important; /* 強制的にど真ん中に固定 */
+            object-position: center center !important;
             display: block;
         }
 
-        /* 装飾用の星座線 */
         .constellation-line {
             position: absolute;
             width: 115%;
@@ -262,7 +261,125 @@
             pointer-events: none;
         }
 
-        /* 5. マウスの動きに反応する「星くず」のエフェクト用スタイル */
+        /* ==========================================================================
+           3. 下位セクション（ABOUT, CONTENTS, CONNECT）
+           ========================================================================== */
+        section {
+            padding: 100px 8%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        section h2 {
+            font-size: 2rem;
+            color: #d4af37;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        /* ABOUT */
+        .about-text {
+            font-size: 1.05rem;
+            line-height: 2;
+            color: #b0c2de;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* CONTENTS */
+        .contents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .content-card h3 {
+            color: #ffffff;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .content-card p {
+            color: #b0c2de;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* CONNECT (SNSリンク) */
+        .connect-container {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .connect-p {
+            color: #b0c2de;
+            margin-bottom: 40px;
+            font-size: 1rem;
+        }
+
+        .sns-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .sns-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+            transition: transform 0.3s, opacity 0.3s;
+            color: #ffffff;
+        }
+
+        .sns-button:hover {
+            transform: translateY(-3px);
+            opacity: 0.9;
+        }
+
+        /* 各SNSブランドカラー */
+        .btn-instagram { background-color: #e1306c; box-shadow: 0 4px 12px rgba(225, 48, 108, 0.3); }
+        .btn-youtube { background-color: #ff0000; box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3); }
+
+        /* フッター */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #556b8f;
+            font-size: 13px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            z-index: 10;
+        }
+
+        /* ==========================================================================
+           5. マウスの動きに反応する「星くず」エフェクト用スタイル
+           ========================================================================== */
         .sparkle {
             position: fixed;
             width: 4px;
@@ -280,10 +397,22 @@
             0% { transform: translate(0, 0) scale(1); opacity: 1; }
             100% { transform: translate(var(--mx), var(--my)) scale(0); opacity: 0; }
         }
+
+        /* レスポンシブ（スマホ対応） */
+        @media (max-width: 768px) {
+            header { padding: 20px 5%; flex-direction: column; gap: 15px; }
+            nav a { margin: 0 10px; }
+            .hero-container { flex-direction: column-reverse; padding: 20px 5% 60px 5%; text-align: center; gap: 40px; }
+            .hero-content { text-align: center; }
+            .hero-content h1 { font-size: 2rem; text-align: center; }
+            .hero-description { margin: 0 auto 40px auto; text-align: center; }
+            .avatar-frame { width: 280px; height: 280px; }
+        }
     </style>
 </head>
 <body>
 
+    <!-- ヘッダーナビゲーション -->
     <header>
         <div class="logo">RIZA</div>
         <nav>
@@ -293,36 +422,90 @@
         </nav>
     </header>
 
-    <main class="container">
-        <div class="hero-content">
-            <div class="subtitle">✦ Mystical Navigation ✦</div>
-            <h1>星のまたたきが教える、<br>あなたの物語。</h1>
-            <div class="hero-description">
-                絵本を開くように、あなたの未来をそっと読み解きませんか。<br>
-                日々の喧騒から離れ、星空の動きと調和する心地よい導きをお届けします。
+    <main>
+        <!-- メインヒーロー領域 -->
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="subtitle">✦ Mystical Navigation ✦</div>
+                <h1>星のまたたきが教える、<br>あなたの物語。</h1>
+                <div class="hero-description">
+                    絵本を開くように、あなたの未来をそっと読み解きませんか。<br>
+                    日々の喧削から離れ、星空の動きと調和する心地よい導きをお届けします。
+                </div>
+                <!-- LINE公式アカウントへのリンク -->
+                <a href="https://line.me/R/ti/p/@471oxpqi" class="line-button">
+                    <div class="line-icon"></div>
+                    LINEで1分無料診断をうける
+                </a>
             </div>
-            <!-- LINEリンク先は元の通りに設定してください -->
-            <a href="https://line.me/R/ti/p/@471oxpqi" class="line-button">
-                <div class="line-icon"></div>
-                LINEで1分無料診断をうける
-            </a>
+
+            <div class="hero-graphic">
+                <div class="avatar-frame">
+                    <div class="avatar-frame-inner">
+                        <!-- 丸枠画像：ズレ修正適用済み -->
+                        <img src="ライザ全身.jpg" alt="ライザ画像">
+                    </div>
+                    <div class="constellation-line"></div>
+                </div>
+            </div>
         </div>
 
-        <div class="hero-graphic">
-            <div class="avatar-frame">
-                <div class="avatar-frame-inner">
-                    <!-- 保存されている正しいアバター画像の名前 -->
-                    <img src="ライザ全身.jpg" alt="ライザ画像">
-                </div>
-                <div class="constellation-line"></div>
+        <!-- ABOUT セクション -->
+        <section id="about">
+            <h2>ABOUT</h2>
+            <div class="about-text">
+                私たちは、星の配置とカードが紡ぎ出す神秘的なメッセージをお届けする占いユニットです。<br>
+                あなたが人生の岐路に立ったとき、暗闇を照らす一筋 constellation（星座）のように、<br>
+                そっと進むべき道をナビゲートいたします。心穏やかなひとときをお過ごしください。
             </div>
-        </div>
+        </section>
+
+        <!-- CONTENTS セクション -->
+        <section id="contents">
+            <h2>CONTENTS</h2>
+            <div class="contents-grid">
+                <div class="content-card">
+                    <h3>西洋占星術</h3>
+                    <p>あなたが生まれた瞬間の星の配置（ホロスコープ）から、本来の資質や運命のバイオリズムを深く読み解きます。</p>
+                </div>
+                <div class="content-card">
+                    <h3>タロットリーディング</h3>
+                    <p>今、この瞬間に必要な具体的なアドバイスや、近い未来に起こる出来事を神秘的なカードを展開して映し出します。</p>
+                </div>
+                <div class="content-card">
+                    <h3>マンスリーナビ</h3>
+                    <p>毎月の星の動きに合わせた特別な過ごし方や、運気を味方につけるためのラッキーアクションをご案内します。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONNECT セクション (Instagram / YouTubeリンク完全復元) -->
+        <section id="connect">
+            <h2>CONNECT</h2>
+            <div class="connect-container">
+                <p class="connect-p">日々の雑学や運勢のアドバイス、特別動画を各SNSで発信しています。ぜひ繋がってください。</p>
+                <div class="sns-links">
+                    <!-- Instagramリンク -->
+                    <a href="https://www.instagram.com/uranaiza/" class="sns-button btn-instagram" target="_blank" rel="noopener noreferrer">
+                        Instagram を見る
+                    </a>
+                    <!-- YouTubeリンク -->
+                    <a href="https://www.youtube.com/@DeepNightTherapy" class="sns-button btn-youtube" target="_blank" rel="noopener noreferrer">
+                        YouTube チャンネル
+                    </a>
+                </div>
+            </div>
+        </section>
     </main>
+
+    <footer>
+        <p>&copy; 2026 RIZA. All Rights Reserved.</p>
+    </footer>
 
     <!-- 5. マウスの「星くず」モーションを動かすプログラム -->
     <script>
         document.addEventListener('mousemove', function(e) {
-            // 毎回ではなく少し間引きして星を出す
+            // 描写負荷を下げるため間引きして粒子を生成
             if (Math.random() > 0.15) return;
 
             const sparkle = document.createElement('div');
@@ -330,15 +513,15 @@
             sparkle.style.left = e.clientX + 'px';
             sparkle.style.top = e.clientY + 'px';
 
-            // 飛び散る方向をランダムに計算
-            const moveX = (Math.random() - 0.5) * 30;
-            const moveY = (Math.random() - 0.5) * 30 + 20; // やや下へ落ちる
+            // 粒子の飛び散る方向を計算
+            const moveX = (Math.random() - 0.5) * 35;
+            const moveY = (Math.random() - 0.5) * 35 + 20; // わずかに重力で落ちる
             sparkle.style.setProperty('--mx', moveX + 'px');
             sparkle.style.setProperty('--my', moveY + 'px');
 
             document.body.appendChild(sparkle);
 
-            // アニメーション終了後に要素を消す
+            // 0.8秒後に自動消滅
             setTimeout(() => {
                 sparkle.remove();
             }, 800);
