@@ -214,11 +214,11 @@
             border-radius: 50%;
             overflow: hidden;
         }
-        .avatar-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center !important;
+        .avatar-frame img, img.profile-image, [class*="avatar"] img, [class*="profile"] img {
+       width: 100% !important;
+       height: 100% !important;
+       object-fit: cover !important;
+       object-position: center center !important;
         }
         .constellation-line {
             position: absolute;
