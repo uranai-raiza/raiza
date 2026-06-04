@@ -33,7 +33,6 @@
             position: relative;
         }
 
-        /* ✦ 流れ星プログラム ✦ */
         .shooting-star-1 {
             position: fixed;
             top: 5%;
@@ -88,7 +87,6 @@
             color: #d4af37;
         }
 
-        /* ===== HEADER & NAVIGATION ===== */
         header {
             position: fixed;
             top: 0;
@@ -115,7 +113,6 @@
             letter-spacing: 4px;
         }
 
-        /* ハンバーガーメニューボタン */
         .menu-toggle {
             display: none;
             flex-direction: column;
@@ -159,7 +156,6 @@
             color: #d4af37;
         }
 
-        /* モバイルメニュー */
         .mobile-menu {
             display: none;
             position: fixed;
@@ -293,7 +289,6 @@
             animation: rotate 60s linear infinite;
         }
 
-        /* ===== CTA ボタン ===== */
         .line-cta-btn {
             display: inline-flex;
             align-items: center;
@@ -415,7 +410,6 @@
             text-align: left;
         }
 
-        /* ===== レビューセクション ===== */
         .reviews-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -491,7 +485,6 @@
             font-size: 1.5rem;
         }
 
-        /* ===== フォーム ===== */
         .contact-form {
             max-width: 600px;
             margin: 0 auto;
@@ -564,81 +557,30 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* ===== レスポンシブ ===== */
         @media (max-width: 868px) {
-            .menu-toggle {
-                display: flex;
-            }
-            nav {
-                display: none;
-            }
-            .hero-flex {
-                flex-direction: column-reverse;
-                align-items: center;
-                text-align: left;
-            }
-            .hero-content h1 {
-                font-size: 2.1rem;
-            }
-            .avatar-frame {
-                width: 280px;
-                height: 280px;
-                margin: 0 auto;
-            }
-            .grid-layout {
-                grid-template-columns: 1fr;
-            }
-            .reviews-grid {
-                grid-template-columns: 1fr;
-            }
-            .sns-flex {
-                justify-content: flex-start;
-            }
-            .cta-premium {
-                margin-bottom: 16px;
-                margin-right: 0;
-                width: 100%;
-            }
-            .line-cta-btn {
-                width: 100%;
-            }
-            section {
-                padding: 80px 0;
-            }
-            .hero {
-                min-height: auto;
-                padding-top: 120px;
-            }
-            .section-header h2 {
-                font-size: 1.5rem;
-            }
+            .menu-toggle { display: flex; }
+            nav { display: none; }
+            .hero-flex { flex-direction: column-reverse; align-items: center; text-align: left; }
+            .hero-content h1 { font-size: 2.1rem; }
+            .avatar-frame { width: 280px; height: 280px; margin: 0 auto; }
+            .grid-layout { grid-template-columns: 1fr; }
+            .reviews-grid { grid-template-columns: 1fr; }
+            .sns-flex { justify-content: flex-start; }
+            .cta-premium { margin-bottom: 16px; margin-right: 0; width: 100%; }
+            .line-cta-btn { width: 100%; }
+            section { padding: 80px 0; }
+            .hero { min-height: auto; padding-top: 120px; }
+            .section-header h2 { font-size: 1.5rem; }
         }
 
         @media (max-width: 600px) {
-            .header-wrap {
-                height: 60px;
-            }
-            .logo {
-                font-size: 1rem;
-                letter-spacing: 2px;
-            }
-            .hero-content h1 {
-                font-size: 1.8rem;
-            }
-            .hero-desc {
-                font-size: 0.9rem;
-            }
-            .cta-premium,
-            .line-cta-btn {
-                padding: 14px 28px;
-                font-size: 0.95rem;
-            }
-            .contact-form {
-                padding: 24px;
-            }
-            section {
-                padding: 60px 0;
-            }
+            .header-wrap { height: 60px; }
+            .logo { font-size: 1rem; letter-spacing: 2px; }
+            .hero-content h1 { font-size: 1.8rem; }
+            .hero-desc { font-size: 0.9rem; }
+            .cta-premium, .line-cta-btn { padding: 14px 28px; font-size: 0.95rem; }
+            .contact-form { padding: 24px; }
+            section { padding: 60px 0; }
         }
     </style>
 </head>
@@ -650,15 +592,11 @@
     <header>
         <div class="header-wrap">
             <div class="logo">RIZA</div>
-            
-            <!-- ハンバーガーメニュー -->
             <button class="menu-toggle" id="menuToggle">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-
-            <!-- PC メニュー -->
             <nav id="pcNav">
                 <ul>
                     <li><a href="#about">ABOUT</a></li>
@@ -668,8 +606,6 @@
                 </ul>
             </nav>
         </div>
-
-        <!-- モバイル メニュー -->
         <div class="mobile-menu" id="mobileMenu">
             <ul>
                 <li><a href="#about">ABOUT</a></li>
@@ -739,7 +675,6 @@
         </div>
     </section>
 
-    <!-- NEW: レビューセクション -->
     <section id="reviews">
         <div class="container">
             <div class="section-header">
@@ -773,13 +708,11 @@
                 <h2>光の案内所</h2>
             </div>
             <p class="connect-intro">いつもお使いのプラットフォームから、ライザの星の世界へお気軽にお越しください。</p>
-            
             <div class="sns-flex">
                 <a href="https://youtube.com/@uranairaiza?si=QZ58C6z_Sgavno7-" target="_blank" class="sns-line-link"><span class="sns-icon">📺</span> YouTube チャンネル</a>
                 <a href="https://instagram.com/uranai_raiza" target="_blank" class="sns-line-link"><span class="sns-icon">📸</span> Instagram アカウント</a>
                 <a href="https://page.line.me/608becez" target="_blank" class="sns-line-link"><span class="sns-icon">💬</span> LINE 公式</a>
             </div>
-
             <div style="margin-top: 40px; text-align: center;">
                 <p style="font-size: 0.9rem; color: #d4af37; margin-bottom: 16px;">＼ あなたの未来を今すぐのぞいてみる ／</p>
                 <a href="https://page.line.me/608becez" target="_blank" class="line-cta-btn">LINEで1分無料診断をうける</a>
@@ -787,7 +720,7 @@
         </div>
     </section>
 
-    <!-- NEW: お問い合わせセクション -->
+    <!-- お問い合わせセクション　※Formspree連携済み -->
     <section id="contact">
         <div class="container">
             <div class="section-header">
@@ -807,8 +740,9 @@
                     <label for="subject">お問い合わせ内容 *</label>
                     <select id="subject" name="subject" style="width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(212, 175, 55, 0.2); color: #ecf0f5; border-radius: 4px;" required>
                         <option value="">選択してください</option>
-                        <option value="general">一般的なお問い合わせ</option>
+                        <option value="reading">鑑定のお申し込み</option>
                         <option value="business">お仕事のご依頼</option>
+                        <option value="general">一般的なお問い合わせ</option>
                         <option value="other">その他</option>
                     </select>
                 </div>
@@ -828,7 +762,6 @@
     </footer>
 
     <script>
-        // ハンバーガーメニュー機能
         const menuToggle = document.getElementById('menuToggle');
         const mobileMenu = document.getElementById('mobileMenu');
 
@@ -837,7 +770,6 @@
             mobileMenu.classList.toggle('active');
         });
 
-        // リンククリック時にメニューを閉じる
         const mobileMenuLinks = mobileMenu.querySelectorAll('a');
         mobileMenuLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -845,22 +777,6 @@
                 mobileMenu.classList.remove('active');
             });
         });
-
-        // フォーム送信処理
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-
-            // メール送信（実装例：FormspreeやEmailJSを使用）
-            // ここではデモのためアラート表示
-            alert(`ご送信ありがとうございます。\n\n以下の内容で送信しました：\nお名前：${name}\nメール：${email}\n\nお返事までお待ちください。`);
-            
-            // フォームをリセット
-            event.target.reset();
-        }
     </script>
 
 </body>
