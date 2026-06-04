@@ -3,108 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RIZA - ミスティカルナビゲーション</title>
+    <title>占いライザ 公式サイト - 星空が教える光の導き</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Serif+JP:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
-        /* ==========================================================================
-           1. ベーススタイル（夜空の背景 ＆ 1.星空またたきモーション）
-           ========================================================================== */
-        body {
+        * {
             margin: 0;
             padding: 0;
-            background-color: #0b0f19;
-            color: #ffffff;
-            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Noto Serif JP', 'Georgia', serif;
+            background-color: #0c1424; 
+            background-image: 
+                radial-gradient(circle at 50% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 45%),
+                radial-gradient(circle at 80% 70%, rgba(0, 180, 216, 0.1) 0%, transparent 50%),
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px);
+            background-size: 100% 100%, 100% 100%, 300px 300px, 400px 400px;
+            background-position: 0 0, 0 0, 40px 60px, 130px 220px;
+            color: #ecf0f5;
+            line-height: 1.9;
             overflow-x: hidden;
+            letter-spacing: 0.08em;
             position: relative;
         }
 
-        /* 1. 背景の星空が「本当にまたたく」モーション */
-        body::before {
-            content: "";
+        /* ✦ 流れ星プログラム ✦ */
+        .shooting-star-1 {
+            position: fixed;
+            top: 5%;
+            left: 80%;
+            width: 120px;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 100%);
+            transform: rotate(-35deg);
+            opacity: 0;
+            z-index: 99;
+            pointer-events: none;
+            animation: shoot-animation-1 7s ease-in-out infinite;
+        }
+        .shooting-star-2 {
+            position: fixed;
+            top: 15%;
+            left: 70%;
+            width: 90px;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(212, 175, 55, 0.8) 0%, rgba(212, 175, 55, 0) 100%);
+            transform: rotate(-38deg);
+            opacity: 0;
+            z-index: 99;
+            pointer-events: none;
+            animation: shoot-animation-2 9s ease-in-out infinite;
+            animation-delay: 3.5s;
+        }
+
+        @keyframes shoot-animation-1 {
+            0% { transform: translate(0, 0) rotate(-35deg); opacity: 0; }
+            10% { opacity: 1; }
+            25% { transform: translate(-500px, 350px) rotate(-35deg); opacity: 0; }
+            100% { transform: translate(-500px, 350px) rotate(-35deg); opacity: 0; }
+        }
+        @keyframes shoot-animation-2 {
+            0% { transform: translate(0, 0) rotate(-38deg); opacity: 0; }
+            8% { opacity: 1; }
+            22% { transform: translate(-400px, 310px) rotate(-38deg); opacity: 0; }
+            100% { transform: translate(-400px, 310px) rotate(-38deg); opacity: 0; }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .en-font {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.25em;
+            color: #d4af37;
+        }
+
+        header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(1px 1px at 20px 30px, #fff, rgba(0,0,0,0)),
-                radial-gradient(1.5px 1.5px at 40px 70px, #fff, rgba(0,0,0,0)),
-                radial-gradient(1px 1px at 50px 160px, #fff, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 80px 120px, #fff, rgba(0,0,0,0)),
-                radial-gradient(1.5px 1.5px at 110px 210px, #fff, rgba(0,0,0,0)),
-                radial-gradient(1px 1px at 150px 50px, #fff, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 190px 90px, #fff, rgba(0,0,0,0));
-            background-size: 200px 200px;
-            animation: starTwinkle 4s ease-in-out infinite alternate;
-            opacity: 0.4;
-            z-index: 0;
-            pointer-events: none;
+            z-index: 1000;
+            background: rgba(12, 20, 36, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
         }
-
-        @keyframes starTwinkle {
-            0% { opacity: 0.2; }
-            50% { opacity: 0.6; }
-            100% { opacity: 0.3; }
-        }
-
-        /* ヘッダー */
-        header {
+        .header-wrap {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 30px 8%;
-            position: relative;
-            z-index: 10;
+            height: 80px;
         }
-
         .logo {
-            font-size: 24px;
-            font-weight: bold;
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
             color: #d4af37;
-            letter-spacing: 2px;
+            letter-spacing: 4px;
         }
-
-        nav a {
-            color: #b0c2de;
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+        nav ul li a {
+            color: #c8d3e6;
             text-decoration: none;
-            margin-left: 30px;
-            font-size: 14px;
-            letter-spacing: 1px;
+            font-size: 0.85rem;
             transition: color 0.3s;
         }
-
-        nav a:hover {
-            color: #ffffff;
+        nav ul li a:hover {
+            color: #d4af37;
         }
 
-        /* ==========================================================================
-           2. ヒーローセクション（トップ画面）
-           ========================================================================== */
-        .hero-container {
+        section {
+            padding: 120px 0;
+            position: relative;
+            z-index: 2;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+        .section-header span {
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 500;
+            color: #ffffff;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        .section-header h2::after {
+            content: '✦';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #d4af37;
+            font-size: 0.8rem;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+        }
+        .hero-flex {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 40px 8% 100px 8%;
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 10;
+            gap: 40px;
+            width: 100%;
         }
-
         .hero-content {
             flex: 1.2;
             text-align: left;
         }
-
-        .subtitle {
-            color: #d4af37;
-            font-size: 14px;
-            letter-spacing: 3px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
-        /* 3. キャッチコピーが滑らかに浮き上がるモーション */
         .hero-content h1 {
             font-size: 2.8rem;
             font-weight: 500;
@@ -112,420 +182,330 @@
             color: #ffffff;
             margin-bottom: 24px;
             text-align: left;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         }
-
-        .hero-description {
+        .hero-desc {
             font-size: 1rem;
             color: #b0c2de;
             margin-bottom: 40px;
             max-width: 500px;
-            line-height: 1.8;
+            font-weight: 300;
             text-align: left;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1.2s cubic-bezier(0.25, 1, 0.5, 1) 0.3s forwards;
         }
 
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* 4. LINEボタンの「上品なキラリ」モーション */
-        .line-button {
-            display: inline-flex;
-            align-items: center;
-            background-color: #06c755;
-            color: #ffffff;
-            text-decoration: none;
-            padding: 18px 32px;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 16px;
-            box-shadow: 0 4px 15px rgba(6, 199, 85, 0.4);
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
-            overflow: hidden;
-            opacity: 0;
-            animation: fadeInUp 1.2s cubic-bezier(0.25, 1, 0.5, 1) 0.6s forwards;
-        }
-
-        .line-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(6, 199, 85, 0.6);
-        }
-
-        .line-button::after {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -60%;
-            width: 30%;
-            height: 200%;
-            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
-            transform: rotate(25deg);
-            animation: shine 4s infinite ease-in-out;
-        }
-
-        @keyframes shine {
-            0% { left: -60%; }
-            15% { left: 140%; }
-            100% { left: 140%; }
-        }
-
-        .line-icon {
-            width: 24px;
-            height: 24px;
-            margin-right: 12px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3E%3Cpath d='M24 10.3c0-5.7-5.4-10.3-12-10.3S0 4.6 0 10.3c0 5.1 4.3 9.3 10.1 10.1.4.1.9.3 1 .6l.4 2.2c.1.4.3.5.6.3l2.7-2.4c1.9-.6 3.7-1.7 5.1-3.2 2.7-2.1 4.1-4.7 4.1-7.6z'/%3E%3C/svg%3E");
-            background-size: contain;
-            background-repeat: no-repeat;
-        }
-
-        /* 2. アバター画像（丸枠）の「神秘的なオーラ」と「画像中央固定」 */
         .hero-graphic {
             flex: 0.8;
             display: flex;
             justify-content: center;
             position: relative;
         }
-
         .avatar-frame {
             width: 360px;
             height: 360px;
             border-radius: 50%;
+            border: 1px solid rgba(212, 175, 55, 0.4);
             padding: 8px;
             background: rgba(12, 20, 36, 0.5);
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.1);
             position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
-
-        /* 金の輪のアニメーション */
-        .avatar-frame::before {
-            content: "";
-            position: absolute;
-            top: -4px;
-            left: -4px;
-            right: -4px;
-            bottom: -4px;
-            border-radius: 50%;
-            border: 1px solid rgba(212, 175, 55, 0.4);
-            animation: orbit 20s linear infinite;
-        }
-
-        @keyframes orbit {
-            0% { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.02); }
-            100% { transform: rotate(360deg) scale(1); }
-        }
-
         .avatar-frame-inner {
             width: 100%;
             height: 100%;
             border-radius: 50%;
             overflow: hidden;
-            position: relative;
-            animation: breathe 6s ease-in-out infinite alternate;
         }
-
-        @keyframes breathe {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.03); }
+        .avatar-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
-
-        /* 【重要】ズレを完全に修正して中央に固定する記述 */
-        .avatar-frame-inner img {
-            width: 100% !important;
-            height: 100% !important;
-            object-fit: cover !important;
-            object-position: center center !important;
-            display: block;
-        }
-
         .constellation-line {
             position: absolute;
             width: 115%;
             height: 115%;
+            border: 1px dashed rgba(212, 175, 55, 0.15);
+            border-radius: 50%;
             top: -7.5%;
             left: -7.5%;
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            border-radius: 50%;
-            pointer-events: none;
+            animation: rotate 60s linear infinite;
         }
 
-        /* ==========================================================================
-           3. 下位セクション（ABOUT, CONTENTS, CONNECT）
-           ========================================================================== */
-        section {
-            padding: 100px 8%;
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 10;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        section h2 {
-            font-size: 2rem;
-            color: #d4af37;
-            margin-bottom: 40px;
-            letter-spacing: 2px;
-            text-align: center;
-        }
-
-        /* ABOUT */
-        .about-text {
-            font-size: 1.05rem;
-            line-height: 2;
-            color: #b0c2de;
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        /* CONTENTS */
-        .contents-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-            margin-top: 20px;
-        }
-
-        .content-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 40px 30px;
-            border-radius: 12px;
-            text-align: center;
-            transition: transform 0.3s, border-color 0.3s;
-        }
-
-        .content-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(212, 175, 55, 0.3);
-        }
-
-        .content-card h3 {
-            color: #ffffff;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-        }
-
-        .content-card p {
-            color: #b0c2de;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* CONNECT (SNSリンク) */
-        .connect-container {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .connect-p {
-            color: #b0c2de;
-            margin-bottom: 40px;
-            font-size: 1rem;
-        }
-
-        .sns-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        .sns-button {
+        .line-cta-btn {
             display: inline-flex;
             align-items: center;
-            padding: 14px 28px;
-            border-radius: 30px;
+            justify-content: center;
+            background: linear-gradient(135deg, #06c755 0%, #05a948 100%);
+            color: #ffffff;
+            padding: 18px 44px;
+            border-radius: 50px;
+            font-size: 1.15rem;
+            font-weight: 700;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 15px;
-            transition: transform 0.3s, opacity 0.3s;
+            box-shadow: 0 10px 25px rgba(6, 199, 85, 0.25);
+            transition: all 0.3s;
+            letter-spacing: 2px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .line-cta-btn::before {
+            content: '💬';
+            margin-right: 12px;
+            font-size: 1.3rem;
+        }
+        .line-cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(6, 199, 85, 0.4);
             color: #ffffff;
         }
 
-        .sns-button:hover {
-            transform: translateY(-3px);
-            opacity: 0.9;
+        .about {
+            background: rgba(255, 255, 255, 0.01);
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        .about-box {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .about-lead {
+            font-size: 1.25rem;
+            color: #ffffff;
+            margin-bottom: 24px;
+            font-weight: 500;
+            text-align: left;
+        }
+        .about-text {
+            font-size: 1rem;
+            color: #b0c2de;
+            margin-bottom: 50px;
+            font-weight: 300;
+            text-align: left;
+        }
+        .story-deco {
+            color: #d4af37;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-align: left;
         }
 
-        /* 各SNSブランドカラー */
-        .btn-instagram { background-color: #e1306c; box-shadow: 0 4px 12px rgba(225, 48, 108, 0.3); }
-        .btn-youtube { background-color: #ff0000; box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3); }
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        .story-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 4px;
+            padding: 40px;
+            transition: all 0.3s;
+            text-align: left;
+        }
+        .story-card:hover {
+            border-color: #d4af37;
+            background: rgba(255,255,255,0.03);
+            transform: translateY(-2px);
+        }
+        .card-num {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            color: #d4af37;
+            display: block;
+            margin-bottom: 12px;
+        }
+        .story-card h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 16px;
+            text-align: left;
+        }
+        .story-card p {
+            font-size: 0.95rem;
+            color: #b0c2de;
+            font-weight: 300;
+            text-align: left;
+        }
 
-        /* フッター */
+        .connect {
+            text-align: left;
+        }
+        .connect-intro {
+            max-width: 600px;
+            margin: 0 auto 50px 0;
+            color: #b0c2de;
+            font-weight: 300;
+            text-align: left;
+        }
+        .sns-flex {
+            display: flex;
+            justify-content: flex-start;
+            gap: 24px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+        .sns-line-link {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            padding: 20px 32px;
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        .sns-line-link:hover {
+            border-color: #d4af37;
+            background: rgba(212, 175, 55, 0.05);
+        }
+        .sns-icon {
+            font-size: 1.5rem;
+        }
+
         footer {
+            padding: 50px 0;
             text-align: center;
-            padding: 40px 0;
-            color: #556b8f;
-            font-size: 13px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            position: relative;
-            z-index: 10;
+            font-size: 0.8rem;
+            color: #5b6f94;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            background: #080d18;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1px;
         }
 
-        /* ==========================================================================
-           5. マウスの動きに反応する「星くず」エフェクト用スタイル
-           ========================================================================== */
-        .sparkle {
-            position: fixed;
-            width: 4px;
-            height: 4px;
-            background-color: #fff;
-            box-shadow: 0 0 10px #d4af37, 0 0 20px #fff;
-            border-radius: 50%;
-            pointer-events: none;
-            opacity: 1;
-            z-index: 9999;
-            animation: fadeOutParticle 0.8s ease-out forwards;
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
         }
 
-        @keyframes fadeOutParticle {
-            0% { transform: translate(0, 0) scale(1); opacity: 1; }
-            100% { transform: translate(var(--mx), var(--my)) scale(0); opacity: 0; }
-        }
-
-        /* レスポンシブ（スマホ対応） */
-        @media (max-width: 768px) {
-            header { padding: 20px 5%; flex-direction: column; gap: 15px; }
-            nav a { margin: 0 10px; }
-            .hero-container { flex-direction: column-reverse; padding: 20px 5% 60px 5%; text-align: center; gap: 40px; }
-            .hero-content { text-align: center; }
-            .hero-content h1 { font-size: 2rem; text-align: center; }
-            .hero-description { margin: 0 auto 40px auto; text-align: center; }
-            .avatar-frame { width: 280px; height: 280px; }
+        @media (max-width: 868px) {
+            .hero-flex {
+                flex-direction: column-reverse;
+                text-align: left;
+            }
+            .hero-content h1 {
+                font-size: 2.1rem;
+            }
+            .avatar-frame {
+                width: 280px;
+                height: 280px;
+                margin: 0 auto;
+            }
+            .grid-layout {
+                grid-template-columns: 1fr;
+            }
+            nav ul {
+                display: none;
+            }
+            .sns-flex {
+                justify-content: flex-start;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- ヘッダーナビゲーション -->
+    <div class="shooting-star-1"></div>
+    <div class="shooting-star-2"></div>
+
     <header>
-        <div class="logo">RIZA</div>
-        <nav>
-            <a href="#about">ABOUT</a>
-            <a href="#contents">CONTENTS</a>
-            <a href="#connect">CONNECT</a>
-        </nav>
+        <div class="container header-wrap">
+            <div class="logo">RIZA</div>
+            <nav>
+                <ul>
+                    <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#contents">CONTENTS</a></li>
+                    <li><a href="#connect">CONNECT</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <main>
-        <!-- メインヒーロー領域 -->
-        <div class="hero-container">
+    <section class="hero">
+        <div class="container hero-flex">
             <div class="hero-content">
-                <div class="subtitle">✦ Mystical Navigation ✦</div>
+                <p class="en-font" style="font-size: 0.9rem; margin-bottom: 12px;">✦ Mistical Navigation ✦</p>
                 <h1>星のまたたきが教える、<br>あなたの物語。</h1>
-                <div class="hero-description">
-                    絵本を開くように、あなたの未来をそっと読み解きませんか。<br>
-                    日々の喧削から離れ、星空の動きと調和する心地よい導きをお届けします。
-                </div>
-                <!-- LINE公式アカウントへのリンク -->
-                <a href="https://line.me/R/ti/p/@471oxpqi" class="line-button">
-                    <div class="line-icon"></div>
-                    LINEで1分無料診断をうける
-                </a>
+                <p class="hero-desc">絵本を開くように、あなたの未来をそっと読み解きませんか。日々の喧騒から離れ、星空の動きと調和する心地よい導きをお届けします。</p>
+                <a href="https://page.line.me/608becez" target="_blank" class="line-cta-btn">LINEで1分無料診断をうける</a>
             </div>
-
             <div class="hero-graphic">
+                <div class="constellation-line"></div>
                 <div class="avatar-frame">
                     <div class="avatar-frame-inner">
-                        <!-- 丸枠画像：ズレ修正適用済み -->
-                        <img src="ライザ全身.jpg" alt="ライザ画像">
+                        <img src="ライザ全身.jpg" alt="占いライザ" onerror="this.style.display='none'; document.getElementById('fallback').style.display='block';">
+                        <div id="fallback" style="display:none; text-align: center; padding-top: 110px; color: #d4af37;">
+                            ✦ 占いライザ ✦
+                        </div>
                     </div>
-                    <div class="constellation-line"></div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- ABOUT セクション -->
-        <section id="about">
-            <h2>ABOUT</h2>
-            <div class="about-text">
-                私たちは、星の配置とカードが紡ぎ出す神秘的なメッセージをお届けする占いユニットです。<br>
-                あなたが人生の岐路に立ったとき、暗闇を照らす一筋 constellation（星座）のように、<br>
-                そっと進むべき道をナビゲートいたします。心穏やかなひとときをお過ごしください。
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="en-font">✦ STORY ✦</span>
+                <h2>ライザについて</h2>
             </div>
-        </section>
-
-        <!-- CONTENTS セクション -->
-        <section id="contents">
-            <h2>CONTENTS</h2>
-            <div class="contents-grid">
-                <div class="content-card">
-                    <h3>西洋占星術</h3>
-                    <p>あなたが生まれた瞬間の星の配置（ホロスコープ）から、本来の資質や運命のバイオリズムを深く読み解きます。</p>
-                </div>
-                <div class="content-card">
-                    <h3>タロットリーディング</h3>
-                    <p>今、この瞬間に必要な具体的なアドバイスや、近い未来に起こる出来事を神秘的なカードを展開して映し出します。</p>
-                </div>
-                <div class="content-card">
-                    <h3>マンスリーナビ</h3>
-                    <p>毎月の星の動きに合わせた特別な過ごし方や、運気を味方につけるためのラッキーアクションをご案内します。</p>
-                </div>
+            <div class="about-box">
+                <div class="story-deco">✦</div>
+                <p class="about-lead">すべてのSNSで一貫した、洗練された星の世界</p>
+                <p class="about-text">
+                    占いライザは、訪れた方がまるで一冊の美しい本の世界に迷い込んだかのような、上質で落ち着いた体験を大切にしています。複雑な毎日のなかで迷いが生じたとき、天体の運行や直感的なリーディングを通じて、あなたの心の霧をやさしく晴らす光の道標を提示いたします。
+                </p>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- CONNECT セクション (Instagram / YouTubeリンク完全復元) -->
-        <section id="connect">
-            <h2>CONNECT</h2>
-            <div class="connect-container">
-                <p class="connect-p">日々の雑学や運勢のアドバイス、特別動画を各SNSで発信しています。ぜひ繋がってください。</p>
-                <div class="sns-links">
-                    <!-- Instagramリンク -->
-                    <a href="https://www.instagram.com/uranaiza/" class="sns-button btn-instagram" target="_blank" rel="noopener noreferrer">
-                        Instagram を見る
-                    </a>
-                    <!-- YouTubeリンク -->
-                    <a href="https://www.youtube.com/@DeepNightTherapy" class="sns-button btn-youtube" target="_blank" rel="noopener noreferrer">
-                        YouTube チャンネル
-                    </a>
+    <section id="contents" class="contents">
+        <div class="container">
+            <div class="section-header">
+                <span class="en-font">✦ THE WORLDS ✦</span>
+                <h2>お届けしているコンテンツ</h2>
+            </div>
+            <div class="grid-layout">
+                <div class="story-card">
+                    <span class="card-num">I</span>
+                    <h3>神秘の雑学 ＆ ナイトセラピー</h3>
+                    <p>YouTube「雑学の森」や「Deep Night Therapy」を通じ、夜の時間を深く静かに楽しむための都市伝説や知的な雑学を発信。ライザの静謐な世界観をそのまま美しい映像とともに届けています。</p>
+                </div>
+                <div class="story-card">
+                    <span class="card-num">II</span>
+                    <h3>星の動き ＆ デジタルリーディング</h3>
+                    <p>天体のリズムを読み解くスマートなデジタルリーディング。SNSの縦型ショート動画でも、日々の暮らしにそっと寄り添い、明日からの行動を前向きに変える言葉を定期的にお伝えしています。</p>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <section id="connect" class="connect">
+        <div class="container">
+            <div class="section-header">
+                <span class="en-font">✦ CONNECT ✦</span>
+                <h2>光の案内所</h2>
+            </div>
+            <p class="connect-intro">いつもお使いのプラットフォームから、ライザの星の世界へお気軽にお越しください。</p>
+            
+            <div class="sns-flex">
+                <a href="https://youtube.com/@uranairaiza?si=QZ58C6z_Sgavno7-" target="_blank" class="sns-line-link"><span class="sns-icon">📺</span> YouTube チャンネル</a>
+                <a href="https://instagram.com/uranai_raiza" target="_blank" class="sns-line-link"><span class="sns-icon">📸</span> Instagram アカウント</a>
+            </div>
+
+            <div style="margin-top: 40px; text-align: left;">
+                <p style="font-size: 0.9rem; color: #d4af37; margin-bottom: 16px; text-align: left;">＼ あなたの未来を今すぐのぞいてみる ／</p>
+                <a href="https://page.line.me/608becez" target="_blank" class="line-cta-btn">LINEで1分無料診断をうける</a>
+            </div>
+        </div>
+    </section>
 
     <footer>
-        <p>&copy; 2026 RIZA. All Rights Reserved.</p>
+        <div class="container">
+            <p>&copy; 2026 FORTUNE RIZA. All Rights Reserved.</p>
+        </div>
     </footer>
 
-    <!-- 5. マウスの「星くず」モーションを動かすプログラム -->
-    <script>
-        document.addEventListener('mousemove', function(e) {
-            // 描写負荷を下げるため間引きして粒子を生成
-            if (Math.random() > 0.15) return;
-
-            const sparkle = document.createElement('div');
-            sparkle.className = 'sparkle';
-            sparkle.style.left = e.clientX + 'px';
-            sparkle.style.top = e.clientY + 'px';
-
-            // 粒子の飛び散る方向を計算
-            const moveX = (Math.random() - 0.5) * 35;
-            const moveY = (Math.random() - 0.5) * 35 + 20; // わずかに重力で落ちる
-            sparkle.style.setProperty('--mx', moveX + 'px');
-            sparkle.style.setProperty('--my', moveY + 'px');
-
-            document.body.appendChild(sparkle);
-
-            // 0.8秒後に自動消滅
-            setTimeout(() => {
-                sparkle.remove();
-            }, 800);
-        });
-    </script>
 </body>
 </html>
