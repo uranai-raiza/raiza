@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>占いライザ 公式サイト - 星空が教える光の導き</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Serif+JP:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Noto Serif JP', 'Georgia', serif;
+            background-color: #0c1424; 
+            background-image: 
+                radial-gradient(circle at 50% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 45%),
+                radial-gradient(circle at 80% 70%, rgba(0, 180, 216, 0.1) 0%, transparent 50%),
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px);
+            background-size: 100% 100%, 100% 100%, 300px 300px, 400px 400px;
+            background-position: 0 0, 0 0, 40px 60px, 130px 220px;
+            color: #ecf0f5;
+            line-height: 1.9;
+            overflow-x: hidden;
+            letter-spacing: 0.08em;
+            position: relative;
+        }
+
+        /* ✦ 流れ星プログラム ✦ */
+        .shooting-star-1 {
+            position: fixed;
+            top: 5%;
+            left: 80%;
+            width: 120px;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 100%);
+            transform: rotate(-35deg);
+            opacity: 0;
+            z-index: 99;
+            pointer-events: none;
+            animation: shoot-animation-1 7s ease-in-out infinite;
+        }
+        .shooting-star-2 {
+            position: fixed;
+            top: 15%;
+            left: 70%;
+            width: 90px;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(212, 175, 55, 0.8) 0%, rgba(212, 175, 55, 0) 100%);
+            transform: rotate(-38deg);
+            opacity: 0;
+            z-index: 99;
+            pointer-events: none;
+            animation: shoot-animation-2 9s ease-in-out infinite;
+            animation-delay: 3.5s;
+        }
+
+        @keyframes shoot-animation-1 {
+            0% { transform: translate(0, 0) rotate(-35deg); opacity: 0; }
+            10% { opacity: 1; }
+            25% { transform: translate(-500px, 350px) rotate(-35deg); opacity: 0; }
+            100% { transform: translate(-500px, 350px) rotate(-35deg); opacity: 0; }
+        }
+        @keyframes shoot-animation-2 {
+            0% { transform: translate(0, 0) rotate(-38deg); opacity: 0; }
+            8% { opacity: 1; }
+            22% { transform: translate(-400px, 310px) rotate(-38deg); opacity: 0; }
+            100% { transform: translate(-400px, 310px) rotate(-38deg); opacity: 0; }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .en-font {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.25em;
+            color: #d4af37;
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(12, 20, 36, 0.95);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+        }
+        .header-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            padding: 0 24px;
+        }
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #d4af37;
+            letter-spacing: 4px;
+        }
+
+        /* ハンバーガーメニューボタン */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            gap: 6px;
+            z-index: 1001;
+        }
+        .menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background-color: #d4af37;
+            transition: all 0.3s;
+        }
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px);
+        }
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        nav {
+            display: flex;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+        nav ul li a {
+            color: #c8d3e6;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #d4af37;
+        }
+
+        /* モバイルメニュー */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background: rgba(12, 20, 36, 0.98);
+            backdrop-filter: blur(8px);
+            padding: 24px;
+            z-index: 999;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+        }
+        .mobile-menu.active {
+            display: block;
+        }
+        .mobile-menu ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .mobile-menu ul li a {
+            color: #c8d3e6;
+            text-decoration: none;
+            font-size: 1rem;
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        section {
+            padding: 120px 0;
+            position: relative;
+            z-index: 2;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+        .section-header span {
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 500;
+            color: #ffffff;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        .section-header h2::after {
+            content: '✦';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #d4af37;
+            font-size: 0.8rem;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+        }
+        .hero-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            width: 100%;
+        }
+        .hero-content {
+            flex: 1.2;
+            text-align: left;
+        }
+        .hero-content h1 {
+            font-size: 2.8rem;
+            font-weight: 500;
+            line-height: 1.4;
+            color: #ffffff;
+            margin-bottom: 24px;
+            text-align: left;
+        }
+        .hero-desc {
+            font-size: 1rem;
+            color: #b0c2de;
+            margin-bottom: 40px;
+            max-width: 500px;
+            font-weight: 300;
+            text-align: left;
+        }
+
+        .hero-graphic {
+            flex: 0.8;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+        .avatar-frame {
+            width: 360px;
+            height: 360px;
+            border-radius: 50%;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            padding: 8px;
+            background: rgba(12, 20, 36, 0.5);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.1), 0 0 60px rgba(0, 180, 216, 0.15);
+            position: relative;
+        }
+        .avatar-frame-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        .avatar-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .constellation-line {
+            position: absolute;
+            width: 115%;
+            height: 115%;
+            border: 1px dashed rgba(212, 175, 55, 0.15);
+            border-radius: 50%;
+            top: -7.5%;
+            left: -7.5%;
+            animation: rotate 60s linear infinite;
+        }
+
+        /* ===== CTA ボタン ===== */
+        .line-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #06c755 0%, #05a948 100%);
+            color: #ffffff;
+            padding: 18px 44px;
+            border-radius: 50px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(6, 199, 85, 0.25);
+            transition: all 0.3s;
+            letter-spacing: 2px;
+            border: 1px solid rgba(255,255,255,0.1);
+            cursor: pointer;
+        }
+        .line-cta-btn::before {
+            content: '💬';
+            margin-right: 12px;
+            font-size: 1.3rem;
+        }
+        .line-cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(6, 199, 85, 0.4);
+            color: #ffffff;
+        }
+
+        .cta-premium {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #d4af37 0%, #f0e68c 100%);
+            color: #0c1424;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            margin-right: 16px;
+        }
+        .cta-premium:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.5);
+        }
+
+        .about {
+            background: rgba(255, 255, 255, 0.01);
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        .about-box {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .about-lead {
+            font-size: 1.25rem;
+            color: #ffffff;
+            margin-bottom: 24px;
+            font-weight: 500;
+            text-align: left;
+        }
+        .about-text {
+            font-size: 1rem;
+            color: #b0c2de;
+            margin-bottom: 50px;
+            font-weight: 300;
+            text-align: left;
+        }
+        .story-deco {
+            color: #d4af37;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        .story-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 4px;
+            padding: 40px;
+            transition: all 0.3s;
+            text-align: left;
+        }
+        .story-card:hover {
+            border-color: #d4af37;
+            background: rgba(255,255,255,0.03);
+            transform: translateY(-2px);
+        }
+        .card-num {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            color: #d4af37;
+            display: block;
+            margin-bottom: 12px;
+        }
+        .story-card h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 16px;
+            text-align: left;
+        }
+        .story-card p {
+            font-size: 0.95rem;
+            color: #b0c2de;
+            font-weight: 300;
+            text-align: left;
+        }
+
+        /* ===== レビューセクション ===== */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .review-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 4px;
+            padding: 32px;
+            text-align: left;
+            transition: all 0.3s;
+        }
+        .review-card:hover {
+            border-color: #d4af37;
+            background: rgba(255,255,255,0.03);
+            transform: translateY(-2px);
+        }
+        .review-stars {
+            color: #d4af37;
+            font-size: 1rem;
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+        }
+        .review-text {
+            font-size: 0.95rem;
+            color: #b0c2de;
+            margin-bottom: 16px;
+            font-style: italic;
+            font-weight: 300;
+        }
+        .review-author {
+            font-size: 0.85rem;
+            color: #d4af37;
+            font-weight: 600;
+        }
+
+        .connect {
+            text-align: left;
+        }
+        .connect-intro {
+            max-width: 600px;
+            margin: 0 auto 50px 0;
+            color: #b0c2de;
+            font-weight: 300;
+            text-align: left;
+        }
+        .sns-flex {
+            display: flex;
+            justify-content: flex-start;
+            gap: 24px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+        .sns-line-link {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            padding: 20px 32px;
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        .sns-line-link:hover {
+            border-color: #d4af37;
+            background: rgba(212, 175, 55, 0.05);
+        }
+        .sns-icon {
+            font-size: 1.5rem;
+        }
+
+        /* ===== フォーム ===== */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            padding: 40px;
+            border-radius: 4px;
+        }
+        .form-group {
+            margin-bottom: 24px;
+        }
+        .form-group label {
+            display: block;
+            color: #d4af37;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            color: #ecf0f5;
+            font-family: 'Noto Serif JP', serif;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #d4af37;
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #d4af37 0%, #f0e68c 100%);
+            color: #0c1424;
+            border: none;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+        }
+
+        footer {
+            padding: 50px 0;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #5b6f94;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            background: #080d18;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1px;
+        }
+
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* ===== レスポンシブ ===== */
+        @media (max-width: 868px) {
+            .menu-toggle {
+                display: flex;
+            }
+            nav {
+                display: none;
+            }
+            .hero-flex {
+                flex-direction: column-reverse;
+                text-align: left;
+            }
+            .hero-content h1 {
+                font-size: 2.1rem;
+            }
+            .avatar-frame {
+                width: 280px;
+                height: 280px;
+                margin: 0 auto;
+            }
+            .grid-layout {
+                grid-template-columns: 1fr;
+            }
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+            .sns-flex {
+                justify-content: flex-start;
+            }
+            .cta-premium {
+                margin-bottom: 16px;
+                margin-right: 0;
+                width: 100%;
+            }
+            .line-cta-btn {
+                width: 100%;
+            }
+            section {
+                padding: 80px 0;
+            }
+            .hero {
+                min-height: auto;
+                padding-top: 120px;
+            }
+            .section-header h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header-wrap {
+                height: 60px;
+            }
+            .logo {
+                font-size: 1rem;
+                letter-spacing: 2px;
+            }
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            .hero-desc {
+                font-size: 0.9rem;
+            }
+            .cta-premium,
+            .line-cta-btn {
+                padding: 14px 28px;
+                font-size: 0.95rem;
+            }
+            .contact-form {
+                padding: 24px;
+            }
+            section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="shooting-star-1"></div>
+    <div class="shooting-star-2"></div>
+
+    <header>
+        <div class="header-wrap">
+            <div class="logo">RIZA</div>
+            
+            <!-- ハンバーガーメニュー -->
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- PC メニュー -->
+            <nav id="pcNav">
+                <ul>
+                    <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#contents">CONTENTS</a></li>
+                    <li><a href="#reviews">REVIEWS</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- モバイル メニュー -->
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#contents">CONTENTS</a></li>
+                <li><a href="#reviews">REVIEWS</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-flex">
+            <div class="hero-content">
+                <p class="en-font" style="font-size: 0.9rem; margin-bottom: 12px;">✦ Mystical Navigation ✦</p>
+                <h1>星のまたたきが教える、<br>あなたの物語。</h1>
+                <p class="hero-desc">絵本を開くように、あなたの未来をそっと読み解きませんか。日々の喧騒から離れ、星空の動きと調和する心地よい導きをお届けします。</p>
+                <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                    <button class="cta-premium" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">✨ プレミアム鑑定</button>
+                    <a href="https://page.line.me/608becez" target="_blank" class="line-cta-btn">LINEで1分無料診断をうける</a>
+                </div>
+            </div>
+            <div class="hero-graphic">
+                <div class="constellation-line"></div>
+                <div class="avatar-frame">
+                    <div class="avatar-frame-inner">
+                        <img src="ライザ全身.jpg" alt="占いライザ">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="en-font">✦ STORY ✦</span>
+                <h2>ライザについて</h2>
+            </div>
+            <div class="about-box">
+                <div class="story-deco">✦</div>
+                <p class="about-lead">すべてのSNSで一貫した、洗練された星の世界</p>
+                <p class="about-text">
+                    占いライザは、訪れた方がまるで一冊の美しい本の世界に迷い込んだかのような、上質で落ち着いた体験を大切にしています。複雑な毎日のなかで迷いが生じたとき、天体の運行や直感的なリーディングを通じて、あなたの心の霧をやさしく晴らす光の道標を提示いたします。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contents" class="contents">
+        <div class="container">
+            <div class="section-header">
+                <span class="en-font">✦ THE WORLDS ✦</span>
+                <h2>お届けしているコンテンツ</h2>
+            </div>
+            <div class="grid-layout">
+                <div class="story-card">
+                    <span class="card-num">I</span>
+                    <h3>神秘の雑学 ＆ ナイトセラピー</h3>
+                    <p>YouTube「雑学の森」や「Deep Night Therapy」を通じ、夜の時間を深く静かに楽しむための都市伝説や知的な雑学を発信。ライザの静謐な世界観をそのまま美しい映像とともに届けています。</p>
+                </div>
+                <div class="story-card">
+                    <span class="card-num">II</span>
+                    <h3>星の動き ＆ デジタルリーディング</h3>
+                    <p>天体のリズムを読み解くスマートなデジタルリーディング。SNSの縦型ショート動画でも、日々の暮らしにそっと寄り添い、明日からの行動を前向きに変える言葉を定期的にお伝えしています。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: レビューセクション -->
+    <section id="reviews">
+        <div class="container">
+            <div class="section-header">
+                <span class="en-font">✦ VOICES ✦</span>
+                <h2>お客様からの声</h2>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">「占いを受けた瞬間、心が軽くなりました。今後の人生について前向きに考えることができます。」</p>
+                    <p class="review-author">— 東京都 M.S 様</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">「ライザさんの言葉は本当に的確で、驚きました。仕事の決断に迷っていましたが、勇気が出ました。」</p>
+                    <p class="review-author">— 大阪府 T.K 様</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">「YouTubeの動画から占いを受けました。こんなに素敵な世界観のサービスは初めてです！」</p>
+                    <p class="review-author">— 福岡県 Y.N 様</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="connect" class="connect">
+        <div class="container">
+            <div class="section-header">
+                <span class="en-font">✦ CONNECT ✦</span>
+                <h2>光の案内所</h2>
+            </div>
+            <p class="connect-intro">いつもお使いのプラットフォームから、ライザの星の世界へお気軽にお越しください。</p>
+            
+            <div class="sns-flex">
+                <a href="https://youtube.com/@uranairaiza?si=QZ58C6z_Sgavno7-" target="_blank" class="sns-line-link"><span class="sns-icon">📺</span> YouTube チャンネル</a>
+                <a href="https://instagram.com/uranai_raiza" target="_blank" class="sns-line-link"><span class="sns-icon">📸</span> Instagram アカウント</a>
+                <a href="https://page.line.me/608becez" target="_blank" class="sns-line-link"><span class="sns-icon">💬</span> LINE 公式</a>
+            </div>
+
+            <div style="margin-top: 40px; text-align: center;">
+                <p style="font-size: 0.9rem; color: #d4af37; margin-bottom: 16px;">＼ あなたの未来を今すぐのぞいてみる ／</p>
+                <a href="https://page.line.me/608becez" target="_blank" class="line-cta-btn">LINEで1分無料診断をうける</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: お問い合わせセクション -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="en-font">✦ INQUIRY ✦</span>
+                <h2>お問い合わせ</h2>
+            </div>
+            <form class="contact-form" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label for="name">お名前 *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">メールアドレス *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">お問い合わせ内容 *</label>
+                    <select id="subject" name="subject" style="width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(212, 175, 55, 0.2); color: #ecf0f5; border-radius: 4px;" required>
+                        <option value="">選択してください</option>
+                        <option value="general">一般的なお問い合わせ</option>
+                        <option value="business">お仕事のご依頼</option>
+                        <option value="other">その他</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">メッセージ *</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">送信する</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 FORTUNE RIZA. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // ハンバーガーメニュー機能
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // リンククリック時にメニューを閉じる
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // フォーム送信処理
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            // メール送信（実装例：FormspreeやEmailJSを使用）
+            // ここではデモのためアラート表示
+            alert(`ご送信ありがとうございます。\n\n以下の内容で送信しました：\nお名前：${name}\nメール：${email}\n\nお返事までお待ちください。`);
+            
+            // フォームをリセット
+            event.target.reset();
+        }
+    </script>
+
+</body>
+</html>
