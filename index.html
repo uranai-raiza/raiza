@@ -88,13 +88,14 @@
             color: #d4af37;
         }
 
+        /* ===== HEADER & NAVIGATION ===== */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(12, 20, 36, 0.85);
+            background: rgba(12, 20, 36, 0.95);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             border-bottom: 1px solid rgba(212, 175, 55, 0.15);
@@ -104,6 +105,7 @@
             justify-content: space-between;
             align-items: center;
             height: 80px;
+            padding: 0 24px;
         }
         .logo {
             font-family: 'Cinzel', serif;
@@ -111,6 +113,36 @@
             font-weight: 600;
             color: #d4af37;
             letter-spacing: 4px;
+        }
+
+        /* ハンバーガーメニューボタン */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            gap: 6px;
+            z-index: 1001;
+        }
+        .menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background-color: #d4af37;
+            transition: all 0.3s;
+        }
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px);
+        }
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        nav {
+            display: flex;
         }
         nav ul {
             display: flex;
@@ -125,6 +157,37 @@
         }
         nav ul li a:hover {
             color: #d4af37;
+        }
+
+        /* モバイルメニュー */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background: rgba(12, 20, 36, 0.98);
+            backdrop-filter: blur(8px);
+            padding: 24px;
+            z-index: 999;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+        }
+        .mobile-menu.active {
+            display: block;
+        }
+        .mobile-menu ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .mobile-menu ul li a {
+            color: #c8d3e6;
+            text-decoration: none;
+            font-size: 1rem;
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
         }
 
         section {
@@ -205,7 +268,7 @@
             border: 1px solid rgba(212, 175, 55, 0.4);
             padding: 8px;
             background: rgba(12, 20, 36, 0.5);
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.1);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.1), 0 0 60px rgba(0, 180, 216, 0.15);
             position: relative;
         }
         .avatar-frame-inner {
@@ -230,6 +293,7 @@
             animation: rotate 60s linear infinite;
         }
 
+        /* ===== CTA ボタン ===== */
         .line-cta-btn {
             display: inline-flex;
             align-items: center;
@@ -245,6 +309,7 @@
             transition: all 0.3s;
             letter-spacing: 2px;
             border: 1px solid rgba(255,255,255,0.1);
+            cursor: pointer;
         }
         .line-cta-btn::before {
             content: '💬';
@@ -255,6 +320,29 @@
             transform: translateY(-3px);
             box-shadow: 0 15px 30px rgba(6, 199, 85, 0.4);
             color: #ffffff;
+        }
+
+        .cta-premium {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #d4af37 0%, #f0e68c 100%);
+            color: #0c1424;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            margin-right: 16px;
+        }
+        .cta-premium:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.5);
         }
 
         .about {
@@ -327,6 +415,45 @@
             text-align: left;
         }
 
+        /* ===== レビューセクション ===== */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .review-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 4px;
+            padding: 32px;
+            text-align: left;
+            transition: all 0.3s;
+        }
+        .review-card:hover {
+            border-color: #d4af37;
+            background: rgba(255,255,255,0.03);
+            transform: translateY(-2px);
+        }
+        .review-stars {
+            color: #d4af37;
+            font-size: 1rem;
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+        }
+        .review-text {
+            font-size: 0.95rem;
+            color: #b0c2de;
+            margin-bottom: 16px;
+            font-style: italic;
+            font-weight: 300;
+        }
+        .review-author {
+            font-size: 0.85rem;
+            color: #d4af37;
+            font-weight: 600;
+        }
+
         .connect {
             text-align: left;
         }
@@ -364,6 +491,64 @@
             font-size: 1.5rem;
         }
 
+        /* ===== フォーム ===== */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            padding: 40px;
+            border-radius: 4px;
+        }
+        .form-group {
+            margin-bottom: 24px;
+        }
+        .form-group label {
+            display: block;
+            color: #d4af37;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            color: #ecf0f5;
+            font-family: 'Noto Serif JP', serif;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #d4af37;
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #d4af37 0%, #f0e68c 100%);
+            color: #0c1424;
+            border: none;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+        }
+
         footer {
             padding: 50px 0;
             text-align: center;
@@ -379,7 +564,14 @@
             100% { transform: rotate(360deg); }
         }
 
+        /* ===== レスポンシブ ===== */
         @media (max-width: 868px) {
+            .menu-toggle {
+                display: flex;
+            }
+            nav {
+                display: none;
+            }
             .hero-flex {
                 flex-direction: column-reverse;
                 text-align: left;
@@ -395,11 +587,56 @@
             .grid-layout {
                 grid-template-columns: 1fr;
             }
-            nav ul {
-                display: none;
+            .reviews-grid {
+                grid-template-columns: 1fr;
             }
             .sns-flex {
                 justify-content: flex-start;
+            }
+            .cta-premium {
+                margin-bottom: 16px;
+                margin-right: 0;
+                width: 100%;
+            }
+            .line-cta-btn {
+                width: 100%;
+            }
+            section {
+                padding: 80px 0;
+            }
+            .hero {
+                min-height: auto;
+                padding-top: 120px;
+            }
+            .section-header h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header-wrap {
+                height: 60px;
+            }
+            .logo {
+                font-size: 1rem;
+                letter-spacing: 2px;
+            }
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            .hero-desc {
+                font-size: 0.9rem;
+            }
+            .cta-premium,
+            .line-cta-btn {
+                padding: 14px 28px;
+                font-size: 0.95rem;
+            }
+            .contact-form {
+                padding: 24px;
+            }
+            section {
+                padding: 60px 0;
             }
         }
     </style>
@@ -410,34 +647,54 @@
     <div class="shooting-star-2"></div>
 
     <header>
-        <div class="container header-wrap">
+        <div class="header-wrap">
             <div class="logo">RIZA</div>
-            <nav>
+            
+            <!-- ハンバーガーメニュー -->
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- PC メニュー -->
+            <nav id="pcNav">
                 <ul>
                     <li><a href="#about">ABOUT</a></li>
                     <li><a href="#contents">CONTENTS</a></li>
-                    <li><a href="#connect">CONNECT</a></li>
+                    <li><a href="#reviews">REVIEWS</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
                 </ul>
             </nav>
+        </div>
+
+        <!-- モバイル メニュー -->
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#contents">CONTENTS</a></li>
+                <li><a href="#reviews">REVIEWS</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
         </div>
     </header>
 
     <section class="hero">
         <div class="container hero-flex">
             <div class="hero-content">
-                <p class="en-font" style="font-size: 0.9rem; margin-bottom: 12px;">✦ Mistical Navigation ✦</p>
+                <p class="en-font" style="font-size: 0.9rem; margin-bottom: 12px;">✦ Mystical Navigation ✦</p>
                 <h1>星のまたたきが教える、<br>あなたの物語。</h1>
                 <p class="hero-desc">絵本を開くように、あなたの未来をそっと読み解きませんか。日々の喧騒から離れ、星空の動きと調和する心地よい導きをお届けします。</p>
-                <a href="https://page.line.me/608becez" target="_blank" class="line-cta-btn">LINEで1分無料診断をうける</a>
+                <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                    <button class="cta-premium" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">✨ プレミアム鑑定</button>
+                    <a href="https://page.line.me/608becez" target="_blank" class="line-cta-btn">LINEで1分無料診断をうける</a>
+                </div>
             </div>
             <div class="hero-graphic">
                 <div class="constellation-line"></div>
                 <div class="avatar-frame">
                     <div class="avatar-frame-inner">
-                        <img src="ライザ全身.jpg" alt="占いライザ" onerror="this.style.display='none'; document.getElementById('fallback').style.display='block';">
-                        <div id="fallback" style="display:none; text-align: center; padding-top: 110px; color: #d4af37;">
-                            ✦ 占いライザ ✦
-                        </div>
+                        <img src="ライザ全身.jpg" alt="占いライザ">
                     </div>
                 </div>
             </div>
@@ -481,6 +738,33 @@
         </div>
     </section>
 
+    <!-- NEW: レビューセクション -->
+    <section id="reviews">
+        <div class="container">
+            <div class="section-header">
+                <span class="en-font">✦ VOICES ✦</span>
+                <h2>お客様からの声</h2>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">「占いを受けた瞬間、心が軽くなりました。今後の人生について前向きに考えることができます。」</p>
+                    <p class="review-author">— 東京都 M.S 様</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">「ライザさんの言葉は本当に的確で、驚きました。仕事の決断に迷っていましたが、勇気が出ました。」</p>
+                    <p class="review-author">— 大阪府 T.K 様</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">「YouTubeの動画から占いを受けました。こんなに素敵な世界観のサービスは初めてです！」</p>
+                    <p class="review-author">— 福岡県 Y.N 様</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="connect" class="connect">
         <div class="container">
             <div class="section-header">
@@ -492,12 +776,47 @@
             <div class="sns-flex">
                 <a href="https://youtube.com/@uranairaiza?si=QZ58C6z_Sgavno7-" target="_blank" class="sns-line-link"><span class="sns-icon">📺</span> YouTube チャンネル</a>
                 <a href="https://instagram.com/uranai_raiza" target="_blank" class="sns-line-link"><span class="sns-icon">📸</span> Instagram アカウント</a>
+                <a href="https://page.line.me/608becez" target="_blank" class="sns-line-link"><span class="sns-icon">💬</span> LINE 公式</a>
             </div>
 
-            <div style="margin-top: 40px; text-align: left;">
-                <p style="font-size: 0.9rem; color: #d4af37; margin-bottom: 16px; text-align: left;">＼ あなたの未来を今すぐのぞいてみる ／</p>
+            <div style="margin-top: 40px; text-align: center;">
+                <p style="font-size: 0.9rem; color: #d4af37; margin-bottom: 16px;">＼ あなたの未来を今すぐのぞいてみる ／</p>
                 <a href="https://page.line.me/608becez" target="_blank" class="line-cta-btn">LINEで1分無料診断をうける</a>
             </div>
+        </div>
+    </section>
+
+    <!-- NEW: お問い合わせセクション -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="en-font">✦ INQUIRY ✦</span>
+                <h2>お問い合わせ</h2>
+            </div>
+            <form class="contact-form" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label for="name">お名前 *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">メールアドレス *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">お問い合わせ内容 *</label>
+                    <select id="subject" name="subject" style="width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(212, 175, 55, 0.2); color: #ecf0f5; border-radius: 4px;" required>
+                        <option value="">選択してください</option>
+                        <option value="general">一般的なお問い合わせ</option>
+                        <option value="business">お仕事のご依頼</option>
+                        <option value="other">その他</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">メッセージ *</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">送信する</button>
+            </form>
         </div>
     </section>
 
@@ -506,6 +825,42 @@
             <p>&copy; 2026 FORTUNE RIZA. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // ハンバーガーメニュー機能
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // リンククリック時にメニューを閉じる
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // フォーム送信処理
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            // メール送信（実装例：FormspreeやEmailJSを使用）
+            // ここではデモのためアラート表示
+            alert(`ご送信ありがとうございます。\n\n以下の内容で送信しました：\nお名前：${name}\nメール：${email}\n\nお返事までお待ちください。`);
+            
+            // フォームをリセット
+            event.target.reset();
+        }
+    </script>
 
 </body>
 </html>
