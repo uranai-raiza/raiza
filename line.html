@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>占いライザ 公式LINE｜占星術×数秘術であなたの答えを</title>
+  <meta name="description" content="占星術と数秘術を掛け合わせた独自の鑑定。恋愛・結婚・仕事・未来の不安に、宇宙と数字が答えます。占いライザ公式LINEへ。">
+  <meta property="og:title" content="占いライザ 公式LINE｜宇宙と数字はあなたのことを知っています">
+  <meta property="og:description" content="占星術×数秘術の掛け合わせ鑑定。あなただけのメッセージをお届けします。">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400&family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --deep:   #0e0620;
+      --purple: #160430;
+      --gold:   #d4a853;
+      --gold-dim: rgba(212,168,83,.4);
+      --text:   #f0ebff;
+      --muted:  rgba(210,185,255,.5);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--deep);
+      color: var(--text);
+      font-family: 'Noto Serif JP', serif;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ═══════════════════════════════
+       HERO
+    ═══════════════════════════════ */
+    .hero {
+      background: radial-gradient(ellipse 85% 65% at 50% 28%, #2a0850 0%, #160430 52%, var(--deep) 100%);
+      padding: 5rem 2rem 4.5rem;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-size: 9px;
+      letter-spacing: .5em;
+      color: rgba(212,168,83,.6);
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── Symbol ── */
+    .sym-wrap {
+      position: relative;
+      width: min(280px, 80vw);
+      height: min(280px, 80vw);
+      margin: 0 auto 3rem;
+    }
+    .sym-wrap svg { width: 100%; height: 100%; overflow: visible; }
+
+    .ring-zodiac { animation: spinCCW 60s linear infinite; transform-origin: 130px 130px; }
+    .ring-nums   { animation: spinCW  40s linear infinite; transform-origin: 130px 130px; }
+    .ring-geo    { animation: spinCW  80s linear infinite; transform-origin: 130px 130px; }
+    .center-pulse { animation: pulse 4s ease-in-out infinite; }
+
+    @keyframes spinCW   { to { transform: rotate(360deg);  } }
+    @keyframes spinCCW  { to { transform: rotate(-360deg); } }
+    @keyframes pulse    { 0%,100% { opacity:.75; } 50% { opacity:1; } }
+
+    /* ── Hero text ── */
+    .hero-catch {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 3vw, 1.15rem);
+      color: rgba(230,200,255,.55);
+      margin-bottom: 1rem;
+    }
+
+    .hero-h1 {
+      font-weight: 300;
+      font-size: clamp(1.8rem, 5.5vw, 2.4rem);
+      letter-spacing: .13em;
+      line-height: 1.75;
+      color: #f8f2ff;
+    }
+    .hero-h1 em { font-style: normal; color: #ddb8ff; }
+
+    .hero-sub {
+      margin-top: 1.2rem;
+      font-size: clamp(.8rem, 2.5vw, .88rem);
+      color: var(--muted);
+      line-height: 2.2;
+      font-weight: 200;
+    }
+
+    .method-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      background: rgba(160,90,255,.12);
+      border: 1px solid rgba(180,120,255,.28);
+      border-radius: 50px;
+      padding: .5rem 1.4rem;
+      margin-top: 1.6rem;
+    }
+    .method-badge span { font-size: .72rem; letter-spacing: .18em; color: rgba(220,190,255,.75); }
+    .method-badge .x  { color: rgba(212,168,83,.75); }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      max-width: 200px;
+      margin: 2.2rem auto;
+    }
+    .div-line { flex: 1; height: 1px; background: linear-gradient(90deg,transparent,rgba(180,120,255,.38),transparent); }
+    .div-dot  { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 8px rgba(212,168,83,.85); }
+
+    /* ── Buttons ── */
+    .btn-green {
+      display: inline-block;
+      padding: 1rem 2.8rem;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #4dea6e, #06b83e);
+      color: #002714;
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 400;
+      font-size: clamp(.82rem, 2.5vw, .9rem);
+      letter-spacing: .22em;
+      text-decoration: none;
+      box-shadow: 0 4px 24px rgba(6,184,62,.4);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .btn-green:hover { transform: translateY(-2px); box-shadow: 0 6px 32px rgba(6,184,62,.55); }
+
+    .btn-outline {
+      display: inline-block;
+      padding: .85rem 2.2rem;
+      border-radius: 50px;
+      border: 1px solid rgba(190,140,255,.4);
+      color: var(--text);
+      font-family: 'Noto Serif JP', serif;
+      font-size: .78rem;
+      letter-spacing: .2em;
+      text-decoration: none;
+      transition: border-color .25s, background .25s;
+    }
+    .btn-outline:hover { border-color: rgba(210,170,255,.7); background: rgba(120,60,200,.1); }
+
+    .btn-note {
+      display: block;
+      margin-top: .85rem;
+      font-size: .62rem;
+      letter-spacing: .25em;
+      color: rgba(160,130,210,.3);
+    }
+
+    /* ═══════════════════════════════
+       SHARED SECTION
+    ═══════════════════════════════ */
+    section { padding: 5rem 2rem; }
+
+    .sec-label {
+      display: block;
+      text-align: center;
+      font-size: 8px;
+      letter-spacing: .6em;
+      color: var(--gold-dim);
+      margin-bottom: .65rem;
+    }
+
+    .sec-h2 {
+      text-align: center;
+      font-weight: 300;
+      font-size: clamp(1.3rem, 4vw, 1.55rem);
+      letter-spacing: .12em;
+      line-height: 1.9;
+      color: #ede5ff;
+    }
+
+    /* ═══════════════════════════════
+       PAIN
+    ═══════════════════════════════ */
+    .pain { background: #0b0418; }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(160,100,255,.1);
+      margin: 3rem auto 0;
+      max-width: 420px;
+    }
+
+    .pain-card { background: #0e0520; padding: 2rem 1.2rem; text-align: center; }
+    .pain-icon { font-size: 1.6rem; display: block; margin-bottom: .65rem; }
+    .pain-txt  { font-size: .8rem; color: rgba(205,180,250,.55); line-height: 2.1; font-weight: 200; }
+
+    .pain-quote {
+      margin-top: 2.8rem;
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: rgba(210,175,255,.5);
+      line-height: 2.1;
+    }
+
+    /* ═══════════════════════════════
+       METHOD
+    ═══════════════════════════════ */
+    .method { background: #100825; }
+
+    .method-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-width: 420px;
+      margin: 3rem auto 0;
+    }
+
+    .mc {
+      background: #160d2e;
+      border-radius: 16px;
+      padding: 1.8rem 1.5rem;
+      border: 1px solid rgba(170,110,255,.13);
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+    }
+
+    .mc-icon  { font-size: 1.6rem; min-width: 36px; text-align: center; }
+    .mc-tag   {
+      display: inline-block;
+      font-size: 8px;
+      letter-spacing: .25em;
+      color: rgba(212,168,83,.65);
+      background: rgba(212,168,83,.08);
+      border: 1px solid rgba(212,168,83,.2);
+      border-radius: 20px;
+      padding: 2px 10px;
+      margin-bottom: .55rem;
+    }
+    .mc-title { font-size: .95rem; letter-spacing: .12em; color: #e8daff; margin-bottom: .38rem; }
+    .mc-desc  { font-size: .77rem; color: rgba(185,160,230,.5); line-height: 2.1; font-weight: 200; }
+
+    .combo-label {
+      margin-top: 2.8rem;
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: rgba(200,170,255,.45);
+      line-height: 2;
+    }
+
+    /* ═══════════════════════════════
+       VOICE
+    ═══════════════════════════════ */
+    .voice { background: #0b0418; }
+
+    .vc-list {
+      max-width: 420px;
+      margin: 3rem auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    .vc-card {
+      background: #170d30;
+      border-radius: 14px;
+      padding: 1.6rem 1.5rem 1.3rem;
+      border: 1px solid rgba(170,110,255,.1);
+    }
+
+    .vc-age   { font-size: 8px; letter-spacing: .35em; color: rgba(212,168,83,.55); display: block; margin-bottom: .75rem; }
+    .vc-txt   { font-size: .83rem; line-height: 2.1; color: rgba(215,195,250,.65); font-weight: 200; }
+    .vc-stars { color: var(--gold); font-size: .72rem; margin-top: .75rem; letter-spacing: .1em; }
+
+    /* ═══════════════════════════════
+       FINAL CTA
+    ═══════════════════════════════ */
+    .final {
+      background: radial-gradient(ellipse 70% 55% at 50% 18%, #280850 0%, #160430 48%, var(--deep) 100%);
+      text-align: center;
+    }
+
+    .final-h2 {
+      font-weight: 300;
+      font-size: clamp(1.6rem, 5vw, 1.9rem);
+      letter-spacing: .12em;
+      line-height: 1.85;
+      color: #f8f2ff;
+      margin-top: 1.5rem;
+    }
+
+    .final-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: rgba(205,175,255,.45);
+      margin: 1rem 0 2.8rem;
+    }
+
+    .btn-wrap { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+
+    /* ═══════════════════════════════
+       FOOTER
+    ═══════════════════════════════ */
+    footer {
+      background: #070212;
+      padding: 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(160,100,255,.07);
+    }
+    footer p { font-size: .6rem; letter-spacing: .22em; color: rgba(130,100,180,.22); }
+  </style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <span class="hero-badge">占 い ラ イ ザ &nbsp;｜&nbsp; O F F I C I A L &nbsp; L I N E</span>
+
+  <!-- 占星術×数秘術シンボル -->
+  <div class="sym-wrap">
+    <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="cg" cx="50%" cy="50%">
+          <stop offset="0%"   stop-color="#b070ff" stop-opacity=".32"/>
+          <stop offset="100%" stop-color="#0e0620" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="ig" cx="50%" cy="50%">
+          <stop offset="0%"   stop-color="#d4a853" stop-opacity=".15"/>
+          <stop offset="100%" stop-color="#0e0620" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="gz" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="1.5" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <filter id="gn" x="-80%" y="-80%" width="260%" height="260%">
+          <feGaussianBlur stdDeviation="2.5" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <filter id="gc" x="-80%" y="-80%" width="260%" height="260%">
+          <feGaussianBlur stdDeviation="3.5" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+
+      <!-- 背景グロー -->
+      <circle cx="130" cy="130" r="126" fill="url(#cg)"/>
+      <circle cx="130" cy="130" r="52"  fill="url(#ig)"/>
+
+      <!-- 外周：12星座（反時計回り） -->
+      <g class="ring-zodiac">
+        <circle cx="130" cy="130" r="115" fill="none" stroke="rgba(180,120,255,.22)" stroke-width="1"/>
+        <circle cx="130" cy="130" r="100" fill="none" stroke="rgba(180,120,255,.08)" stroke-width=".5" stroke-dasharray="4 7"/>
+        <g stroke="rgba(180,120,255,.25)" stroke-width="1">
+          <line x1="130" y1="15"  x2="130" y2="30"/>
+          <line x1="188" y1="27"  x2="181" y2="40"/>
+          <line x1="233" y1="72"  x2="222" y2="80"/>
+          <line x1="245" y1="130" x2="230" y2="130"/>
+          <line x1="233" y1="188" x2="222" y2="180"/>
+          <line x1="188" y1="233" x2="181" y2="220"/>
+          <line x1="130" y1="245" x2="130" y2="230"/>
+          <line x1="72"  y1="233" x2="79"  y2="220"/>
+          <line x1="27"  y1="188" x2="38"  y2="180"/>
+          <line x1="15"  y1="130" x2="30"  y2="130"/>
+          <line x1="27"  y1="72"  x2="38"  y2="80"/>
+          <line x1="72"  y1="27"  x2="79"  y2="40"/>
+        </g>
+        <g font-size="12" text-anchor="middle" dominant-baseline="central" fill="rgba(215,185,255,.85)" font-family="serif" filter="url(#gz)">
+          <text x="130" y="5">♈</text>
+          <text x="190" y="20">♉</text>
+          <text x="236" y="66">♊</text>
+          <text x="248" y="130">♋</text>
+          <text x="236" y="194">♌</text>
+          <text x="190" y="240">♍</text>
+          <text x="130" y="255">♎</text>
+          <text x="70"  y="240">♏</text>
+          <text x="24"  y="194">♐</text>
+          <text x="12"  y="130">♑</text>
+          <text x="24"  y="66">♒</text>
+          <text x="70"  y="20">♓</text>
+        </g>
+        <g fill="#c090ff" filter="url(#gz)">
+          <circle cx="130" cy="15"  r="2.2"/>
+          <circle cx="188" cy="27"  r="1.8" opacity=".7"/>
+          <circle cx="233" cy="72"  r="1.8" opacity=".7"/>
+          <circle cx="245" cy="130" r="2.2"/>
+          <circle cx="233" cy="188" r="1.8" opacity=".7"/>
+          <circle cx="188" cy="233" r="1.8" opacity=".7"/>
+          <circle cx="130" cy="245" r="2.2"/>
+          <circle cx="72"  cy="233" r="1.8" opacity=".7"/>
+          <circle cx="27"  cy="188" r="1.8" opacity=".7"/>
+          <circle cx="15"  cy="130" r="2.2"/>
+          <circle cx="27"  cy="72"  r="1.8" opacity=".7"/>
+          <circle cx="72"  cy="27"  r="1.8" opacity=".7"/>
+        </g>
+      </g>
+
+      <!-- 中間：1〜9（時計回り） -->
+      <g class="ring-nums">
+        <circle cx="130" cy="130" r="78" fill="none" stroke="rgba(212,168,83,.25)" stroke-width="1"/>
+        <circle cx="130" cy="130" r="66" fill="none" stroke="rgba(212,168,83,.08)" stroke-width=".5" stroke-dasharray="3 6"/>
+        <g fill="rgba(14,6,32,.88)">
+          <circle cx="130" cy="52"  r="11"/>
+          <circle cx="178" cy="65"  r="11"/>
+          <circle cx="207" cy="104" r="11"/>
+          <circle cx="207" cy="156" r="11"/>
+          <circle cx="178" cy="195" r="11"/>
+          <circle cx="130" cy="208" r="11"/>
+          <circle cx="82"  cy="195" r="11"/>
+          <circle cx="53"  cy="156" r="11"/>
+          <circle cx="53"  cy="104" r="11"/>
+        </g>
+        <g font-size="15" text-anchor="middle" dominant-baseline="central"
+           fill="#f0d080" font-family="Georgia,serif" font-style="italic" font-weight="bold" filter="url(#gn)">
+          <text x="130" y="52">1</text>
+          <text x="178" y="65">2</text>
+          <text x="207" y="104">3</text>
+          <text x="207" y="156">4</text>
+          <text x="178" y="195">5</text>
+          <text x="130" y="208">6</text>
+          <text x="82"  y="195">7</text>
+          <text x="53"  y="156">8</text>
+          <text x="53"  y="104">9</text>
+        </g>
+      </g>
+
+      <!-- 内側：幾何学＋マスターナンバー（ゆっくり回転） -->
+      <g class="ring-geo">
+        <polygon points="130,65 165,100 95,100" fill="none" stroke="rgba(180,120,255,.2)" stroke-width="1"/>
+        <polygon points="130,195 95,160 165,160" fill="none" stroke="rgba(180,120,255,.2)" stroke-width="1"/>
+        <circle cx="130" cy="130" r="43" fill="none" stroke="rgba(180,120,255,.18)" stroke-width=".8"/>
+        <!-- 11 -->
+        <circle cx="130" cy="78" r="13" fill="rgba(14,6,32,.92)"/>
+        <circle cx="130" cy="78" r="13" fill="none" stroke="rgba(200,160,255,.45)" stroke-width="1"/>
+        <text x="130" y="78" text-anchor="middle" dominant-baseline="central"
+              font-size="11" fill="#e8d0ff" font-family="serif" font-weight="bold" filter="url(#gn)">11</text>
+        <!-- 22 -->
+        <circle cx="130" cy="182" r="13" fill="rgba(14,6,32,.92)"/>
+        <circle cx="130" cy="182" r="13" fill="none" stroke="rgba(200,160,255,.45)" stroke-width="1"/>
+        <text x="130" y="182" text-anchor="middle" dominant-baseline="central"
+              font-size="11" fill="#e8d0ff" font-family="serif" font-weight="bold" filter="url(#gn)">22</text>
+      </g>
+
+      <!-- 中心（静止） -->
+      <g class="center-pulse">
+        <circle cx="130" cy="130" r="27" fill="rgba(100,40,200,.3)"/>
+        <circle cx="130" cy="130" r="27" fill="none" stroke="rgba(180,120,255,.5)" stroke-width="1.5"/>
+        <text x="130" y="130" text-anchor="middle" dominant-baseline="central"
+              font-size="22" fill="#f0d080" font-family="serif" filter="url(#gc)">✦</text>
+      </g>
+    </svg>
+  </div>
+
+  <p class="hero-catch">— あなたの迷いに、宇宙と数字の答えを —</p>
+  <h1 class="hero-h1">恋愛・結婚・仕事・未来<br>その<em>不安</em>、<br>宇宙と数字に<br>聞いてみませんか</h1>
+  <p class="hero-sub">
+    どんな悩みも、宇宙と数字は知っています。<br>
+    占星術 × 数秘術を掛け合わせた独自の鑑定で、<br>
+    あなただけのメッセージをお届けします。
+  </p>
+  <div class="method-badge">
+    <span>占 星 術</span><span class="x">×</span><span>数 秘 術</span>
+  </div>
+  <div class="divider"><div class="div-line"></div><div class="div-dot"></div><div class="div-line"></div></div>
+  <a class="btn-green" href="https://page.line.me/608becez">▶ &nbsp;無料で鑑定を受け取る</a>
+  <span class="btn-note">登録無料 · いつでも退会可能</span>
+</section>
+
+<!-- ═══ PAIN ═══ -->
+<section class="pain">
+  <span class="sec-label">D O E S &nbsp; T H I S &nbsp; S O U N D &nbsp; F A M I L I A R ?</span>
+  <h2 class="sec-h2">こんな気持ち、<br>抱えていませんか？</h2>
+  <div class="pain-grid">
+    <div class="pain-card">
+      <span class="pain-icon">💔</span>
+      <p class="pain-txt">この恋、進んでいいのか<br>わからない</p>
+    </div>
+    <div class="pain-card">
+      <span class="pain-icon">💍</span>
+      <p class="pain-txt">結婚できるか不安で<br>たまらない</p>
+    </div>
+    <div class="pain-card">
+      <span class="pain-icon">💼</span>
+      <p class="pain-txt">仕事がうまくいかず<br>自信を失っている</p>
+    </div>
+    <div class="pain-card">
+      <span class="pain-icon">🌙</span>
+      <p class="pain-txt">これからの人生、<br>どうすればいいかわからない</p>
+    </div>
+  </div>
+  <p class="pain-quote">そのすべてに、<br>宇宙と数字は答えを持っています。</p>
+</section>
+
+<!-- ═══ METHOD ═══ -->
+<section class="method">
+  <span class="sec-label">T H E &nbsp; M E T H O D</span>
+  <h2 class="sec-h2">ライザだけの<br>掛け合わせ鑑定</h2>
+  <div class="method-cards">
+    <div class="mc">
+      <span class="mc-icon">🔭</span>
+      <div>
+        <span class="mc-tag">占 星 術</span>
+        <p class="mc-title">星の配置が示す、あなたの運命</p>
+        <p class="mc-desc">生まれた瞬間の星の配置から、あなたの本質・才能・人生のテーマを読み解きます。今この時期に何が起きているのか、宇宙のリズムでわかります。</p>
+      </div>
+    </div>
+    <div class="mc">
+      <span class="mc-icon">🔢</span>
+      <div>
+        <span class="mc-tag">数 秘 術</span>
+        <p class="mc-title">数字が明かす、魂の設計図</p>
+        <p class="mc-desc">生年月日に宿る数字の波動が、あなたの使命・課題・人間関係のパターンを照らし出します。なぜ同じ悩みが繰り返されるのか、答えが見つかります。</p>
+      </div>
+    </div>
+    <div class="mc">
+      <span class="mc-icon">✨</span>
+      <div>
+        <span class="mc-tag">占 星 術 × 数 秘 術</span>
+        <p class="mc-title">掛け合わせることで見える真実</p>
+        <p class="mc-desc">どちらか一方では届かない深さに、二つを組み合わせることで到達します。宇宙の流れと数字の設計図が交差する点に、あなたへの答えがあります。</p>
+      </div>
+    </div>
+  </div>
+  <p class="combo-label">宇宙と数字は、<br>あなたのことを知っています。</p>
+</section>
+
+<!-- ═══ VOICE ═══ -->
+<section class="voice">
+  <span class="sec-label">V O I C E S</span>
+  <h2 class="sec-h2">届いた声</h2>
+  <div class="vc-list">
+    <div class="vc-card">
+      <span class="vc-age">20代 / 会社員</span>
+      <p class="vc-txt">占星術と数秘術の組み合わせで、自分でも気づいていなかった恋愛のパターンがわかりました。その後、自然と良い出会いが引き寄せられてきた気がします。</p>
+      <p class="vc-stars">★★★★★</p>
+    </div>
+    <div class="vc-card">
+      <span class="vc-age">30代 / 主婦</span>
+      <p class="vc-txt">結婚に踏み切れずにいましたが、数字が「今が動き時」を示していると聞いて決断できました。今では幸せな毎日を送っています。</p>
+      <p class="vc-stars">★★★★★</p>
+    </div>
+    <div class="vc-card">
+      <span class="vc-age">40代 / フリーランス</span>
+      <p class="vc-txt">転職か独立か悩んでいました。星の配置と数字が同じ方向を示していて、迷いがなくなりました。思い切って独立して大正解でした。</p>
+      <p class="vc-stars">★★★★★</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FINAL CTA ═══ -->
+<section class="final">
+  <div class="divider"><div class="div-line"></div><div class="div-dot"></div><div class="div-line"></div></div>
+  <h2 class="final-h2">宇宙と数字が、<br>あなたへの答えを<br>用意しています</h2>
+  <p class="final-sub">その答えを、今夜受け取ってください。</p>
+  <div class="btn-wrap">
+    <a class="btn-green" style="font-size:.9rem;padding:1.1rem 2.8rem" href="https://page.line.me/608becez">▶ &nbsp;今すぐ無料で登録する</a>
+    <a class="btn-outline" href="https://page.line.me/608becez">占いライザ 公式LINE</a>
+  </div>
+  <span class="btn-note" style="text-align:center;margin-top:1.2rem">
+    登録無料 · いつでも退会可能 · 占いはエンターテインメント目的です
+  </span>
+</section>
+
+<footer>
+  <p>© 占いライザ &nbsp; All rights reserved.</p>
+</footer>
+
+</body>
+</html>
