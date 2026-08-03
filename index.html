@@ -28,37 +28,6 @@
             letter-spacing: 0.06em;
         }
 
-        /* ── 流れ星 ── */
-        .shooting-star-1 {
-            position: fixed; top: 5%; left: 80%; width: 120px; height: 1.5px;
-            background: linear-gradient(90deg, rgba(255,255,255,0.9), transparent);
-            transform: rotate(-35deg); opacity: 0; z-index: 99; pointer-events: none;
-            animation: shoot1 8s ease-in-out infinite;
-        }
-        .shooting-star-2 {
-            position: fixed; top: 15%; left: 70%; width: 90px; height: 1.5px;
-            background: linear-gradient(90deg, rgba(212,175,55,0.8), transparent);
-            transform: rotate(-38deg); opacity: 0; z-index: 99; pointer-events: none;
-            animation: shoot2 11s ease-in-out infinite 3.5s;
-        }
-        .shooting-star-3 {
-            position: fixed; top: 30%; left: 88%; width: 70px; height: 1.5px;
-            background: linear-gradient(90deg, rgba(255,255,255,0.6), transparent);
-            transform: rotate(-32deg); opacity: 0; z-index: 99; pointer-events: none;
-            animation: shoot1 14s ease-in-out infinite 7s;
-        }
-        @keyframes shoot1 {
-            0%   { transform: translate(0,0) rotate(-35deg); opacity: 0; }
-            8%   { opacity: 1; }
-            28%  { transform: translate(-600px,420px) rotate(-35deg); opacity: 0; }
-            100% { transform: translate(-600px,420px) rotate(-35deg); opacity: 0; }
-        }
-        @keyframes shoot2 {
-            0%   { transform: translate(0,0) rotate(-38deg); opacity: 0; }
-            6%   { opacity: 0.9; }
-            22%  { transform: translate(-450px,360px) rotate(-38deg); opacity: 0; }
-            100% { transform: translate(-450px,360px) rotate(-38deg); opacity: 0; }
-        }
         @keyframes rotate { 100% { transform: rotate(360deg); } }
 
         /* ── 共通 ── */
@@ -375,8 +344,6 @@
                 radial-gradient(rgba(179,147,85,.10), rgba(179,147,85,.03) 1px, transparent 30px);
             color: #292521;
         }
-        .shooting-star-1, .shooting-star-3 { background: linear-gradient(90deg, rgba(142,48,69,.38), transparent); }
-        .shooting-star-2 { background: linear-gradient(90deg, rgba(179,147,85,.65), transparent); }
         header, .mobile-menu { background: rgba(246,240,229,.96); border-color: rgba(179,147,85,.30); }
         .logo span, nav ul li a, .mobile-menu ul li a { color: #514941; }
         .mobile-menu ul li a { border-bottom-color: rgba(179,147,85,.24); }
@@ -438,10 +405,6 @@
     </style>
 </head>
 <body>
-
-    <div class="shooting-star-1"></div>
-    <div class="shooting-star-2"></div>
-    <div class="shooting-star-3"></div>
 
     <!-- HEADER -->
     <header>
