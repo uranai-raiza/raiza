@@ -159,7 +159,17 @@
         .hero-note { font-size: 0.73rem; color: #4a5f7a; margin-top: 12px; }
 
         /* ── アバター ── */
-        .hero-graphic { flex: 0.8; display: flex; justify-content: center; align-items: center; position: relative; padding: 60px 0; }
+        .hero-graphic { flex: 0.8; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; padding: 60px 0; }
+        .hero-crown {
+            display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+            margin-bottom: 28px; color: #8e3045;
+            font-size: 0.86rem; font-weight: 500; line-height: 1.8;
+            letter-spacing: 0.06em; text-align: center;
+            position: relative; z-index: 3;
+        }
+        .hero-crown::before, .hero-crown::after {
+            content: ''; width: 24px; height: 1px; background: #b39355;
+        }
         .avatar-outer { position: relative; width: 360px; height: 360px; }
         .orbit-ring {
             position: absolute; border-radius: 50%;
@@ -346,6 +356,12 @@
             section { padding: 60px 0; }
             .cta-block { padding: 60px 0; }
             footer { padding-bottom: 80px; }
+            .hero-crown {
+                width: 100%; margin-bottom: 24px;
+                font-size: 0.78rem; letter-spacing: 0.02em;
+                white-space: nowrap;
+            }
+            .hero-crown::before, .hero-crown::after { display: none; }
         }
 
         /* ── 上品な和モダン配色 ── */
@@ -474,6 +490,7 @@
                 <p class="hero-note">※ 無料診断は毎日先着順。お気軽にご登録ください。</p>
             </div>
             <div class="hero-graphic">
+                <p class="hero-crown">占星術 × 数秘術で、あなたの人生に一筋の光を</p>
                 <div class="avatar-outer">
                     <div class="orbit-ring orbit-1"><div class="orbit-dot"></div></div>
                     <div class="orbit-ring orbit-2"><div class="orbit-dot"></div></div>
