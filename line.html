@@ -1,576 +1,164 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>占いライザ 公式LINE｜占星術×数秘術であなたの答えを</title>
-  <meta name="description" content="占星術と数秘術を掛け合わせた独自の鑑定。恋愛・結婚・仕事・未来の不安に、宇宙と数字が答えます。占いライザ公式LINEへ。">
-  <meta property="og:title" content="占いライザ 公式LINE｜宇宙と数字はあなたのことを知っています">
-  <meta property="og:description" content="占星術×数秘術の掛け合わせ鑑定。あなただけのメッセージをお届けします。">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#181624">
+  <meta name="robots" content="index,follow">
+  <title>占いライザ｜悩みに合わせて選べる個別鑑定</title>
+  <meta name="description" content="恋愛、仕事、人間関係など、今の悩みを整理し、次の選択を考えるための個別鑑定。お試し、スタンダード、プレミアムの3つのプランから選べます。">
+  <link rel="canonical" href="https://uranai-raiza.github.io/raiza/line.html">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="占いライザ">
+  <meta property="og:title" content="占いライザ｜悩みに合わせて選べる個別鑑定">
+  <meta property="og:description" content="判断できずに立ち止まっている状況を整理し、自分で次の選択を考えるための個別鑑定です。">
+  <meta property="og:url" content="https://uranai-raiza.github.io/raiza/line.html">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23181624'/%3E%3Cpath d='M43 10a24 24 0 1 0 9 42A22 22 0 1 1 43 10Z' fill='%23d4aa63'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400&family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&amp;family=Noto+Serif+JP:wght@500;600;700&amp;display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --deep:   #0e0620;
-      --purple: #160430;
-      --gold:   #d4a853;
-      --gold-dim: rgba(212,168,83,.4);
-      --text:   #f0ebff;
-      --muted:  rgba(210,185,255,.5);
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--deep);
-      color: var(--text);
-      font-family: 'Noto Serif JP', serif;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* ═══════════════════════════════
-       HERO
-    ═══════════════════════════════ */
-    .hero {
-      background: radial-gradient(ellipse 85% 65% at 50% 28%, #2a0850 0%, #160430 52%, var(--deep) 100%);
-      padding: 5rem 2rem 4.5rem;
-      text-align: center;
-    }
-
-    .hero-badge {
-      display: inline-block;
-      font-size: 9px;
-      letter-spacing: .5em;
-      color: rgba(212,168,83,.6);
-      margin-bottom: 2.5rem;
-    }
-
-    /* ── Symbol ── */
-    .sym-wrap {
-      position: relative;
-      width: min(280px, 80vw);
-      height: min(280px, 80vw);
-      margin: 0 auto 3rem;
-    }
-    .sym-wrap svg { width: 100%; height: 100%; overflow: visible; }
-
-    .ring-zodiac { animation: spinCCW 60s linear infinite; transform-origin: 130px 130px; }
-    .ring-nums   { animation: spinCW  40s linear infinite; transform-origin: 130px 130px; }
-    .ring-geo    { animation: spinCW  80s linear infinite; transform-origin: 130px 130px; }
-    .center-pulse { animation: pulse 4s ease-in-out infinite; }
-
-    @keyframes spinCW   { to { transform: rotate(360deg);  } }
-    @keyframes spinCCW  { to { transform: rotate(-360deg); } }
-    @keyframes pulse    { 0%,100% { opacity:.75; } 50% { opacity:1; } }
-
-    /* ── Hero text ── */
-    .hero-catch {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: clamp(1rem, 3vw, 1.15rem);
-      color: rgba(230,200,255,.55);
-      margin-bottom: 1rem;
-    }
-
-    .hero-h1 {
-      font-weight: 300;
-      font-size: clamp(1.8rem, 5.5vw, 2.4rem);
-      letter-spacing: .13em;
-      line-height: 1.75;
-      color: #f8f2ff;
-    }
-    .hero-h1 em { font-style: normal; color: #ddb8ff; }
-
-    .hero-sub {
-      margin-top: 1.2rem;
-      font-size: clamp(.8rem, 2.5vw, .88rem);
-      color: var(--muted);
-      line-height: 2.2;
-      font-weight: 200;
-    }
-
-    .method-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: .6rem;
-      background: rgba(160,90,255,.12);
-      border: 1px solid rgba(180,120,255,.28);
-      border-radius: 50px;
-      padding: .5rem 1.4rem;
-      margin-top: 1.6rem;
-    }
-    .method-badge span { font-size: .72rem; letter-spacing: .18em; color: rgba(220,190,255,.75); }
-    .method-badge .x  { color: rgba(212,168,83,.75); }
-
-    .divider {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      max-width: 200px;
-      margin: 2.2rem auto;
-    }
-    .div-line { flex: 1; height: 1px; background: linear-gradient(90deg,transparent,rgba(180,120,255,.38),transparent); }
-    .div-dot  { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 8px rgba(212,168,83,.85); }
-
-    /* ── Buttons ── */
-    .btn-green {
-      display: inline-block;
-      padding: 1rem 2.8rem;
-      border-radius: 50px;
-      background: linear-gradient(135deg, #4dea6e, #06b83e);
-      color: #002714;
-      font-family: 'Noto Serif JP', serif;
-      font-weight: 400;
-      font-size: clamp(.82rem, 2.5vw, .9rem);
-      letter-spacing: .22em;
-      text-decoration: none;
-      box-shadow: 0 4px 24px rgba(6,184,62,.4);
-      transition: transform .25s, box-shadow .25s;
-    }
-    .btn-green:hover { transform: translateY(-2px); box-shadow: 0 6px 32px rgba(6,184,62,.55); }
-
-    .btn-outline {
-      display: inline-block;
-      padding: .85rem 2.2rem;
-      border-radius: 50px;
-      border: 1px solid rgba(190,140,255,.4);
-      color: var(--text);
-      font-family: 'Noto Serif JP', serif;
-      font-size: .78rem;
-      letter-spacing: .2em;
-      text-decoration: none;
-      transition: border-color .25s, background .25s;
-    }
-    .btn-outline:hover { border-color: rgba(210,170,255,.7); background: rgba(120,60,200,.1); }
-
-    .btn-note {
-      display: block;
-      margin-top: .85rem;
-      font-size: .62rem;
-      letter-spacing: .25em;
-      color: rgba(160,130,210,.3);
-    }
-
-    /* ═══════════════════════════════
-       SHARED SECTION
-    ═══════════════════════════════ */
-    section { padding: 5rem 2rem; }
-
-    .sec-label {
-      display: block;
-      text-align: center;
-      font-size: 8px;
-      letter-spacing: .6em;
-      color: var(--gold-dim);
-      margin-bottom: .65rem;
-    }
-
-    .sec-h2 {
-      text-align: center;
-      font-weight: 300;
-      font-size: clamp(1.3rem, 4vw, 1.55rem);
-      letter-spacing: .12em;
-      line-height: 1.9;
-      color: #ede5ff;
-    }
-
-    /* ═══════════════════════════════
-       PAIN
-    ═══════════════════════════════ */
-    .pain { background: #0b0418; }
-
-    .pain-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: rgba(160,100,255,.1);
-      margin: 3rem auto 0;
-      max-width: 420px;
-    }
-
-    .pain-card { background: #0e0520; padding: 2rem 1.2rem; text-align: center; }
-    .pain-icon { font-size: 1.6rem; display: block; margin-bottom: .65rem; }
-    .pain-txt  { font-size: .8rem; color: rgba(205,180,250,.55); line-height: 2.1; font-weight: 200; }
-
-    .pain-quote {
-      margin-top: 2.8rem;
-      text-align: center;
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 1.15rem;
-      color: rgba(210,175,255,.5);
-      line-height: 2.1;
-    }
-
-    /* ═══════════════════════════════
-       METHOD
-    ═══════════════════════════════ */
-    .method { background: #100825; }
-
-    .method-cards {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      max-width: 420px;
-      margin: 3rem auto 0;
-    }
-
-    .mc {
-      background: #160d2e;
-      border-radius: 16px;
-      padding: 1.8rem 1.5rem;
-      border: 1px solid rgba(170,110,255,.13);
-      display: flex;
-      gap: 1.2rem;
-      align-items: flex-start;
-    }
-
-    .mc-icon  { font-size: 1.6rem; min-width: 36px; text-align: center; }
-    .mc-tag   {
-      display: inline-block;
-      font-size: 8px;
-      letter-spacing: .25em;
-      color: rgba(212,168,83,.65);
-      background: rgba(212,168,83,.08);
-      border: 1px solid rgba(212,168,83,.2);
-      border-radius: 20px;
-      padding: 2px 10px;
-      margin-bottom: .55rem;
-    }
-    .mc-title { font-size: .95rem; letter-spacing: .12em; color: #e8daff; margin-bottom: .38rem; }
-    .mc-desc  { font-size: .77rem; color: rgba(185,160,230,.5); line-height: 2.1; font-weight: 200; }
-
-    .combo-label {
-      margin-top: 2.8rem;
-      text-align: center;
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 1.1rem;
-      color: rgba(200,170,255,.45);
-      line-height: 2;
-    }
-
-    /* ═══════════════════════════════
-       VOICE
-    ═══════════════════════════════ */
-    .voice { background: #0b0418; }
-
-    .vc-list {
-      max-width: 420px;
-      margin: 3rem auto 0;
-      display: flex;
-      flex-direction: column;
-      gap: 1.4rem;
-    }
-
-    .vc-card {
-      background: #170d30;
-      border-radius: 14px;
-      padding: 1.6rem 1.5rem 1.3rem;
-      border: 1px solid rgba(170,110,255,.1);
-    }
-
-    .vc-age   { font-size: 8px; letter-spacing: .35em; color: rgba(212,168,83,.55); display: block; margin-bottom: .75rem; }
-    .vc-txt   { font-size: .83rem; line-height: 2.1; color: rgba(215,195,250,.65); font-weight: 200; }
-    .vc-stars { color: var(--gold); font-size: .72rem; margin-top: .75rem; letter-spacing: .1em; }
-
-    /* ═══════════════════════════════
-       FINAL CTA
-    ═══════════════════════════════ */
-    .final {
-      background: radial-gradient(ellipse 70% 55% at 50% 18%, #280850 0%, #160430 48%, var(--deep) 100%);
-      text-align: center;
-    }
-
-    .final-h2 {
-      font-weight: 300;
-      font-size: clamp(1.6rem, 5vw, 1.9rem);
-      letter-spacing: .12em;
-      line-height: 1.85;
-      color: #f8f2ff;
-      margin-top: 1.5rem;
-    }
-
-    .final-sub {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 1.05rem;
-      color: rgba(205,175,255,.45);
-      margin: 1rem 0 2.8rem;
-    }
-
-    .btn-wrap { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
-
-    /* ═══════════════════════════════
-       FOOTER
-    ═══════════════════════════════ */
-    footer {
-      background: #070212;
-      padding: 2rem;
-      text-align: center;
-      border-top: 1px solid rgba(160,100,255,.07);
-    }
-    footer p { font-size: .6rem; letter-spacing: .22em; color: rgba(130,100,180,.22); }
+    :root{--night:#181624;--night2:#252137;--ink:#292733;--muted:#67626d;--paper:#faf8f2;--mist:#f0ece3;--line:#d8d0c2;--gold:#a8732d;--gold2:#d4aa63;--plum:#66415f;--rust:#a94c3e;--rust2:#85382f;--green:#2f6d4a;--white:#fff;--serif:"Noto Serif JP",serif;--sans:"Noto Sans JP",sans-serif;--shadow:0 18px 48px rgba(31,26,42,.12)}
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:20px}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.9;-webkit-font-smoothing:antialiased}
+    body.sticky-on{padding-bottom:76px}
+    a{color:inherit}svg{display:block;max-width:100%}
+    :focus-visible{outline:3px solid #e8a93d;outline-offset:4px}
+    .skip{position:fixed;z-index:100;top:8px;left:8px;transform:translateY(-160%);background:#fff;color:#111;padding:.6rem 1rem}.skip:focus{transform:none}
+    .wrap{width:min(100% - 40px,1080px);margin-inline:auto}.measure{width:min(100% - 40px,760px);margin-inline:auto}
+    .section{padding:clamp(4rem,7vw,6.25rem) 0}.section--mist{background:var(--mist)}.section--night{background:var(--night);color:#fff}
+    .kicker{margin:0 0 .7rem;color:var(--gold);font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+    .section--night .kicker{color:var(--gold2)}
+    h1,h2,h3,p{margin-top:0}h1,h2,h3{font-family:var(--serif);line-height:1.55}h2{margin-bottom:1.2rem;font-size:clamp(1.65rem,4.6vw,2.65rem);letter-spacing:.02em}h3{font-size:1.12rem}p{margin-bottom:1rem}.lead{font-size:1.06rem;line-height:2}
+    .btn{display:inline-flex;min-height:54px;align-items:center;justify-content:center;border:1px solid transparent;border-radius:6px;padding:.85rem 1.25rem;text-decoration:none;font-weight:700;line-height:1.35;transition:.2s background,.2s transform,.2s box-shadow}.btn:hover{transform:translateY(-2px)}
+    .btn--primary{background:var(--rust);color:#fff;box-shadow:0 8px 20px rgba(169,76,62,.23)}.btn--primary:hover{background:var(--rust2)}
+    .btn--line{background:#fff;border-color:var(--green);color:var(--green)}.btn--quiet{border-color:rgba(255,255,255,.42);color:#fff;background:transparent}
+    .hero{position:relative;overflow:hidden;background:var(--night);color:#fff;padding:1.6rem 0 5.6rem}.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 64%,rgba(212,170,99,.07) 64% 65%,transparent 65%),radial-gradient(circle at 87% 15%,rgba(168,115,45,.22),transparent 26%);pointer-events:none}
+    .brand{position:relative;z-index:1;display:flex;align-items:center;gap:.7rem;font-family:var(--serif);font-weight:600;letter-spacing:.13em}.brand-mark{display:grid;width:34px;height:34px;place-items:center;border:1px solid rgba(212,170,99,.75);border-radius:50%;color:var(--gold2)}
+    .hero-grid{position:relative;z-index:1;display:grid;gap:2.7rem;align-items:center;margin-top:3.7rem}.hero-copy{max-width:680px}.hero h1{margin-bottom:1.35rem;font-size:clamp(2rem,6vw,4rem);letter-spacing:.01em}.hero h1 em{font-style:normal;color:var(--gold2)}
+    .hero-text{max-width:610px;color:#e1dae7;font-size:1.02rem}.hero-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.8rem}.hero-note{margin:.8rem 0 0;color:#aaa3b3;font-size:.78rem}.hero-art{width:min(76vw,330px);margin:auto}
+    .route{background:#fff;border-bottom:1px solid var(--line)}.route-list{display:grid;grid-template-columns:repeat(3,1fr);margin:0;padding:0;list-style:none}.route-list li{padding:1rem .5rem;text-align:center;font-family:var(--serif);font-size:.78rem;color:var(--muted);border-right:1px solid var(--line)}.route-list li:last-child{border:0}.route-list b{display:block;color:var(--gold);font-family:var(--sans);font-size:.66rem;letter-spacing:.1em}
+    .empathy-list{display:grid;gap:1.3rem}.empathy{padding:0 0 1.3rem;border-bottom:1px solid var(--line)}.empathy h3{margin-bottom:.45rem}.empathy p{margin:0;color:var(--muted)}
+    .topics{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}.topic{background:var(--paper);padding:1.25rem}.topic strong{display:block;margin-bottom:.25rem;font-family:var(--serif)}.topic span{color:var(--muted);font-size:.88rem}
+    .turning{display:grid;gap:2rem;align-items:start}.pullquote{margin:0;padding:1.8rem;border-block:1px solid var(--gold);color:var(--plum);font-family:var(--serif);font-size:clamp(1.25rem,3.4vw,1.8rem);line-height:1.8}
+    .questions{margin:1.3rem 0 0;padding:0;list-style:none}.questions li{padding:.78rem 0;border-bottom:1px solid var(--line)}.questions li::before{content:"—";margin-right:.7rem;color:var(--gold)}
+    .service-sheet{display:grid;gap:2rem;align-items:center}.service-seal{display:grid;width:180px;aspect-ratio:1;place-items:center;margin:auto;border:1px solid var(--gold);border-radius:50%;background:var(--night);color:var(--gold2);text-align:center;font-family:var(--serif);line-height:1.7;box-shadow:0 0 0 10px var(--mist),0 0 0 11px var(--line)}
+    .facts{display:grid;gap:0;border-top:1px solid var(--line)}.fact{display:grid;grid-template-columns:42px 1fr;gap:.8rem;padding:1.15rem 0;border-bottom:1px solid var(--line)}.fact b{color:var(--gold)}.fact p{margin:0;color:var(--muted)}
+    .compare{display:grid;gap:1rem}.compare-col{padding:1.5rem;border:1px solid rgba(255,255,255,.18)}.compare-col--light{background:#fff;color:var(--ink);border-color:#fff}.compare-col ul{margin:1rem 0 0;padding-left:1.2rem}.compare-col li+li{margin-top:.55rem}
+    .channels{display:flex;flex-wrap:wrap;gap:.65rem}.channel{display:inline-flex;min-height:44px;align-items:center;border:1px solid var(--line);padding:.55rem .75rem;background:#fff;font-size:.86rem;text-decoration:none}.channel:hover{border-color:var(--gold)}.evidence-note{margin-top:1.5rem;padding-left:1rem;border-left:3px solid var(--gold);color:var(--muted)}
+    .plans-intro{margin-bottom:2.6rem}.plans{display:grid;gap:1.4rem}.plan{position:relative;border:1px solid var(--line);background:#fff;padding:1.5rem}.plan-label{margin:0 0 .4rem;color:var(--gold);font-size:.68rem;font-weight:700;letter-spacing:.12em}.plan h3{margin-bottom:.3rem;font-size:1.35rem}.plan-price{margin-bottom:1rem;font-family:var(--serif);font-size:1.65rem}.plan-for{min-height:0;margin-bottom:.7rem;color:var(--plum);font-weight:600}.plan-benefit{margin-bottom:1rem;color:var(--muted);font-size:.88rem}.plan-spec{margin:0 0 1.35rem;padding:0;list-style:none;border-top:1px solid var(--line)}.plan-spec li{display:flex;justify-content:space-between;gap:1rem;padding:.58rem 0;border-bottom:1px solid var(--line);font-size:.88rem}.plan-spec span{color:var(--muted)}.plan .btn{width:100%}
+    .choice{display:grid;gap:0;border-top:1px solid var(--line)}.choice-row{display:grid;gap:.35rem;padding:1.2rem 0;border-bottom:1px solid var(--line)}.choice-row b{font-family:var(--serif);color:var(--plum)}.choice-row p{margin:0;color:var(--muted)}
+    .flow{display:grid;gap:0;counter-reset:flow}.flow-step{position:relative;padding:1.35rem 0 1.35rem 3.6rem;border-bottom:1px solid var(--line)}.flow-step::before{counter-increment:flow;content:"0" counter(flow);position:absolute;left:.2rem;top:1.15rem;color:var(--gold);font-family:var(--serif);font-size:1.2rem}.flow-step p{margin:0;color:var(--muted)}
+    .policy{display:grid;gap:.8rem}.policy-item{padding:1rem 0;border-bottom:1px solid var(--line)}.policy-item strong{display:block;margin-bottom:.2rem;color:var(--plum)}.policy-item p{margin:0;color:var(--muted)}
+    .faq{border-top:1px solid var(--line)}details{border-bottom:1px solid var(--line)}summary{position:relative;cursor:pointer;padding:1.25rem 2.5rem 1.25rem .15rem;font-family:var(--serif);font-weight:600;list-style:none}summary::-webkit-details-marker{display:none}summary::after{content:"＋";position:absolute;right:.3rem;color:var(--plum);font-family:var(--sans);font-size:1.3rem}details[open] summary::after{content:"−"}details p{padding:0 2rem 1.4rem .15rem;color:var(--muted)}
+    .final{text-align:center;background:var(--mist)}.final p{max-width:650px;margin-left:auto;margin-right:auto}.final .btn{margin-top:1rem}
+    .free{text-align:center}.free .btn{margin-top:.8rem}
+    footer{background:#100e18;color:#c3bbc8;padding:3rem 0 5.5rem}.footer-grid{display:grid;gap:1.5rem}.footer-links{display:flex;flex-wrap:wrap;gap:.8rem 1.3rem}.footer-links a{display:inline-flex;min-height:44px;align-items:center;color:#ddd5e1;font-size:.84rem;text-underline-offset:4px}.footer-links span{color:#7f7885;font-size:.84rem}.copyright{margin:1rem 0 0;color:#7f7885;font-size:.74rem}
+    .sticky{position:fixed;z-index:30;left:0;right:0;bottom:0;display:none;align-items:center;gap:.7rem;padding:.55rem max(12px,env(safe-area-inset-left)) calc(.55rem + env(safe-area-inset-bottom));background:rgba(24,22,36,.97);color:#fff;border-top:1px solid rgba(212,170,99,.32);box-shadow:0 -5px 22px rgba(0,0,0,.16)}.sticky.visible{display:flex}.sticky span{flex:1;font-size:.78rem}.sticky strong{display:block;color:var(--gold2);font-family:var(--serif);font-size:.92rem}.sticky .btn{min-height:46px;padding:.65rem .9rem;font-size:.84rem}
+    .noscript{padding:1rem;background:#fff1c8;color:#3c2d00;text-align:center}
+    @media(min-width:760px){body.sticky-on{padding-bottom:0}.wrap,.measure{width:min(100% - 80px,1080px)}.hero-grid{grid-template-columns:1.35fr .65fr}.route-list li{font-size:.92rem}.turning{grid-template-columns:.8fr 1.2fr}.service-sheet{grid-template-columns:240px 1fr}.compare{grid-template-columns:1fr 1fr}.plans{grid-template-columns:repeat(3,1fr);align-items:start}.plan-for{min-height:5.4rem}.choice-row{grid-template-columns:230px 1fr}.policy{grid-template-columns:1fr 1fr;gap:0 2rem}.footer-grid{grid-template-columns:1fr auto;align-items:end}.sticky{display:none!important}}
+    @media(max-width:420px){.wrap,.measure{width:min(100% - 28px,1080px)}.hero{padding-top:1.2rem}.hero-grid{margin-top:2.8rem}.hero-actions .btn{width:100%}.topics{grid-template-columns:1fr}.route-list li{padding:.85rem .25rem;font-size:.7rem}.plan{padding:1.25rem}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
   </style>
 </head>
 <body>
-
-<!-- ═══ HERO ═══ -->
-<section class="hero">
-  <span class="hero-badge">占 い ラ イ ザ &nbsp;｜&nbsp; O F F I C I A L &nbsp; L I N E</span>
-
-  <!-- 占星術×数秘術シンボル -->
-  <div class="sym-wrap">
-    <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <radialGradient id="cg" cx="50%" cy="50%">
-          <stop offset="0%"   stop-color="#b070ff" stop-opacity=".32"/>
-          <stop offset="100%" stop-color="#0e0620" stop-opacity="0"/>
-        </radialGradient>
-        <radialGradient id="ig" cx="50%" cy="50%">
-          <stop offset="0%"   stop-color="#d4a853" stop-opacity=".15"/>
-          <stop offset="100%" stop-color="#0e0620" stop-opacity="0"/>
-        </radialGradient>
-        <filter id="gz" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="1.5" result="b"/>
-          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-        </filter>
-        <filter id="gn" x="-80%" y="-80%" width="260%" height="260%">
-          <feGaussianBlur stdDeviation="2.5" result="b"/>
-          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-        </filter>
-        <filter id="gc" x="-80%" y="-80%" width="260%" height="260%">
-          <feGaussianBlur stdDeviation="3.5" result="b"/>
-          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-        </filter>
-      </defs>
-
-      <!-- 背景グロー -->
-      <circle cx="130" cy="130" r="126" fill="url(#cg)"/>
-      <circle cx="130" cy="130" r="52"  fill="url(#ig)"/>
-
-      <!-- 外周：12星座（反時計回り） -->
-      <g class="ring-zodiac">
-        <circle cx="130" cy="130" r="115" fill="none" stroke="rgba(180,120,255,.22)" stroke-width="1"/>
-        <circle cx="130" cy="130" r="100" fill="none" stroke="rgba(180,120,255,.08)" stroke-width=".5" stroke-dasharray="4 7"/>
-        <g stroke="rgba(180,120,255,.25)" stroke-width="1">
-          <line x1="130" y1="15"  x2="130" y2="30"/>
-          <line x1="188" y1="27"  x2="181" y2="40"/>
-          <line x1="233" y1="72"  x2="222" y2="80"/>
-          <line x1="245" y1="130" x2="230" y2="130"/>
-          <line x1="233" y1="188" x2="222" y2="180"/>
-          <line x1="188" y1="233" x2="181" y2="220"/>
-          <line x1="130" y1="245" x2="130" y2="230"/>
-          <line x1="72"  y1="233" x2="79"  y2="220"/>
-          <line x1="27"  y1="188" x2="38"  y2="180"/>
-          <line x1="15"  y1="130" x2="30"  y2="130"/>
-          <line x1="27"  y1="72"  x2="38"  y2="80"/>
-          <line x1="72"  y1="27"  x2="79"  y2="40"/>
-        </g>
-        <g font-size="12" text-anchor="middle" dominant-baseline="central" fill="rgba(215,185,255,.85)" font-family="serif" filter="url(#gz)">
-          <text x="130" y="5">♈</text>
-          <text x="190" y="20">♉</text>
-          <text x="236" y="66">♊</text>
-          <text x="248" y="130">♋</text>
-          <text x="236" y="194">♌</text>
-          <text x="190" y="240">♍</text>
-          <text x="130" y="255">♎</text>
-          <text x="70"  y="240">♏</text>
-          <text x="24"  y="194">♐</text>
-          <text x="12"  y="130">♑</text>
-          <text x="24"  y="66">♒</text>
-          <text x="70"  y="20">♓</text>
-        </g>
-        <g fill="#c090ff" filter="url(#gz)">
-          <circle cx="130" cy="15"  r="2.2"/>
-          <circle cx="188" cy="27"  r="1.8" opacity=".7"/>
-          <circle cx="233" cy="72"  r="1.8" opacity=".7"/>
-          <circle cx="245" cy="130" r="2.2"/>
-          <circle cx="233" cy="188" r="1.8" opacity=".7"/>
-          <circle cx="188" cy="233" r="1.8" opacity=".7"/>
-          <circle cx="130" cy="245" r="2.2"/>
-          <circle cx="72"  cy="233" r="1.8" opacity=".7"/>
-          <circle cx="27"  cy="188" r="1.8" opacity=".7"/>
-          <circle cx="15"  cy="130" r="2.2"/>
-          <circle cx="27"  cy="72"  r="1.8" opacity=".7"/>
-          <circle cx="72"  cy="27"  r="1.8" opacity=".7"/>
-        </g>
-      </g>
-
-      <!-- 中間：1〜9（時計回り） -->
-      <g class="ring-nums">
-        <circle cx="130" cy="130" r="78" fill="none" stroke="rgba(212,168,83,.25)" stroke-width="1"/>
-        <circle cx="130" cy="130" r="66" fill="none" stroke="rgba(212,168,83,.08)" stroke-width=".5" stroke-dasharray="3 6"/>
-        <g fill="rgba(14,6,32,.88)">
-          <circle cx="130" cy="52"  r="11"/>
-          <circle cx="178" cy="65"  r="11"/>
-          <circle cx="207" cy="104" r="11"/>
-          <circle cx="207" cy="156" r="11"/>
-          <circle cx="178" cy="195" r="11"/>
-          <circle cx="130" cy="208" r="11"/>
-          <circle cx="82"  cy="195" r="11"/>
-          <circle cx="53"  cy="156" r="11"/>
-          <circle cx="53"  cy="104" r="11"/>
-        </g>
-        <g font-size="15" text-anchor="middle" dominant-baseline="central"
-           fill="#f0d080" font-family="Georgia,serif" font-style="italic" font-weight="bold" filter="url(#gn)">
-          <text x="130" y="52">1</text>
-          <text x="178" y="65">2</text>
-          <text x="207" y="104">3</text>
-          <text x="207" y="156">4</text>
-          <text x="178" y="195">5</text>
-          <text x="130" y="208">6</text>
-          <text x="82"  y="195">7</text>
-          <text x="53"  y="156">8</text>
-          <text x="53"  y="104">9</text>
-        </g>
-      </g>
-
-      <!-- 内側：幾何学＋マスターナンバー（ゆっくり回転） -->
-      <g class="ring-geo">
-        <polygon points="130,65 165,100 95,100" fill="none" stroke="rgba(180,120,255,.2)" stroke-width="1"/>
-        <polygon points="130,195 95,160 165,160" fill="none" stroke="rgba(180,120,255,.2)" stroke-width="1"/>
-        <circle cx="130" cy="130" r="43" fill="none" stroke="rgba(180,120,255,.18)" stroke-width=".8"/>
-        <!-- 11 -->
-        <circle cx="130" cy="78" r="13" fill="rgba(14,6,32,.92)"/>
-        <circle cx="130" cy="78" r="13" fill="none" stroke="rgba(200,160,255,.45)" stroke-width="1"/>
-        <text x="130" y="78" text-anchor="middle" dominant-baseline="central"
-              font-size="11" fill="#e8d0ff" font-family="serif" font-weight="bold" filter="url(#gn)">11</text>
-        <!-- 22 -->
-        <circle cx="130" cy="182" r="13" fill="rgba(14,6,32,.92)"/>
-        <circle cx="130" cy="182" r="13" fill="none" stroke="rgba(200,160,255,.45)" stroke-width="1"/>
-        <text x="130" y="182" text-anchor="middle" dominant-baseline="central"
-              font-size="11" fill="#e8d0ff" font-family="serif" font-weight="bold" filter="url(#gn)">22</text>
-      </g>
-
-      <!-- 中心（静止） -->
-      <g class="center-pulse">
-        <circle cx="130" cy="130" r="27" fill="rgba(100,40,200,.3)"/>
-        <circle cx="130" cy="130" r="27" fill="none" stroke="rgba(180,120,255,.5)" stroke-width="1.5"/>
-        <text x="130" y="130" text-anchor="middle" dominant-baseline="central"
-              font-size="22" fill="#f0d080" font-family="serif" filter="url(#gc)">✦</text>
-      </g>
-    </svg>
-  </div>
-
-  <p class="hero-catch">— あなたの迷いに、宇宙と数字の答えを —</p>
-  <h1 class="hero-h1">恋愛・結婚・仕事・未来<br>その<em>不安</em>、<br>宇宙と数字に<br>聞いてみませんか</h1>
-  <p class="hero-sub">
-    どんな悩みも、宇宙と数字は知っています。<br>
-    占星術 × 数秘術を掛け合わせた独自の鑑定で、<br>
-    あなただけのメッセージをお届けします。
-  </p>
-  <div class="method-badge">
-    <span>占 星 術</span><span class="x">×</span><span>数 秘 術</span>
-  </div>
-  <div class="divider"><div class="div-line"></div><div class="div-dot"></div><div class="div-line"></div></div>
-  <a class="btn-green" href="https://page.line.me/608becez">▶ &nbsp;無料で鑑定を受け取る</a>
-  <span class="btn-note">登録無料 · いつでも退会可能</span>
-</section>
-
-<!-- ═══ PAIN ═══ -->
-<section class="pain">
-  <span class="sec-label">D O E S &nbsp; T H I S &nbsp; S O U N D &nbsp; F A M I L I A R ?</span>
-  <h2 class="sec-h2">こんな気持ち、<br>抱えていませんか？</h2>
-  <div class="pain-grid">
-    <div class="pain-card">
-      <span class="pain-icon">💔</span>
-      <p class="pain-txt">この恋、進んでいいのか<br>わからない</p>
-    </div>
-    <div class="pain-card">
-      <span class="pain-icon">💍</span>
-      <p class="pain-txt">結婚できるか不安で<br>たまらない</p>
-    </div>
-    <div class="pain-card">
-      <span class="pain-icon">💼</span>
-      <p class="pain-txt">仕事がうまくいかず<br>自信を失っている</p>
-    </div>
-    <div class="pain-card">
-      <span class="pain-icon">🌙</span>
-      <p class="pain-txt">これからの人生、<br>どうすればいいかわからない</p>
-    </div>
-  </div>
-  <p class="pain-quote">そのすべてに、<br>宇宙と数字は答えを持っています。</p>
-</section>
-
-<!-- ═══ METHOD ═══ -->
-<section class="method">
-  <span class="sec-label">T H E &nbsp; M E T H O D</span>
-  <h2 class="sec-h2">ライザだけの<br>掛け合わせ鑑定</h2>
-  <div class="method-cards">
-    <div class="mc">
-      <span class="mc-icon">🔭</span>
-      <div>
-        <span class="mc-tag">占 星 術</span>
-        <p class="mc-title">星の配置が示す、あなたの運命</p>
-        <p class="mc-desc">生まれた瞬間の星の配置から、あなたの本質・才能・人生のテーマを読み解きます。今この時期に何が起きているのか、宇宙のリズムでわかります。</p>
+  <a class="skip" href="#main">本文へ移動</a>
+  <noscript><div class="noscript">申込みリンクを利用するにはJavaScriptを有効にしてください。</div></noscript>
+  <header class="hero">
+    <div class="wrap">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">☾</span><span>占いライザ</span></div>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="kicker">自分の場合を知りたい方へ</p>
+          <h1>相手の気持ち、仕事の選択、人間関係。<br><em>何度考えても答えが出ない</em>方へ。</h1>
+          <p class="hero-text">動くべきか待つべきか。続けるべきか変えるべきか。無料占いを見ても、自分の場合に当てはまる答えが見つからないことがあります。</p>
+          <p class="hero-text">相談内容をもとに個別の鑑定文を作成し、未来を断定せず、次の選択を考える材料を届けます。相談の深さに合わせて3つのプランから選べます。</p>
+          <div class="hero-actions"><a class="btn btn--primary" href="#plans" data-track="hero_cta">相談内容に合うプランを見る</a></div>
+          <p class="hero-note">未来や結果を保証するサービスではありません。</p>
+        </div>
+        <div class="hero-art" aria-hidden="true"><svg viewBox="0 0 340 340"><circle cx="170" cy="170" r="145" fill="none" stroke="#d4aa63" stroke-opacity=".55"/><circle cx="170" cy="170" r="105" fill="none" stroke="#fff" stroke-opacity=".14"/><path d="M170 25v290M25 170h290M67 67l206 206M273 67 67 273" stroke="#d4aa63" stroke-opacity=".12"/><path d="M208 91a93 93 0 1 0 38 151 81 81 0 1 1-38-151Z" fill="#d4aa63"/><circle cx="265" cy="92" r="4" fill="#fff"/><circle cx="74" cy="130" r="3" fill="#fff"/><circle cx="286" cy="230" r="3" fill="#fff"/></svg></div>
       </div>
     </div>
-    <div class="mc">
-      <span class="mc-icon">🔢</span>
-      <div>
-        <span class="mc-tag">数 秘 術</span>
-        <p class="mc-title">数字が明かす、魂の設計図</p>
-        <p class="mc-desc">生年月日に宿る数字の波動が、あなたの使命・課題・人間関係のパターンを照らし出します。なぜ同じ悩みが繰り返されるのか、答えが見つかります。</p>
-      </div>
-    </div>
-    <div class="mc">
-      <span class="mc-icon">✨</span>
-      <div>
-        <span class="mc-tag">占 星 術 × 数 秘 術</span>
-        <p class="mc-title">掛け合わせることで見える真実</p>
-        <p class="mc-desc">どちらか一方では届かない深さに、二つを組み合わせることで到達します。宇宙の流れと数字の設計図が交差する点に、あなたへの答えがあります。</p>
-      </div>
-    </div>
-  </div>
-  <p class="combo-label">宇宙と数字は、<br>あなたのことを知っています。</p>
-</section>
+  </header>
+  <nav class="route" aria-label="ページの要点"><ol class="wrap route-list"><li><b>01</b>悩みを整理する</li><li><b>02</b>違いを知る</li><li><b>03</b>自分で選ぶ</li></ol></nav>
 
-<!-- ═══ VOICE ═══ -->
-<section class="voice">
-  <span class="sec-label">V O I C E S</span>
-  <h2 class="sec-h2">届いた声</h2>
-  <div class="vc-list">
-    <div class="vc-card">
-      <span class="vc-age">20代 / 会社員</span>
-      <p class="vc-txt">占星術と数秘術の組み合わせで、自分でも気づいていなかった恋愛のパターンがわかりました。その後、自然と良い出会いが引き寄せられてきた気がします。</p>
-      <p class="vc-stars">★★★★★</p>
-    </div>
-    <div class="vc-card">
-      <span class="vc-age">30代 / 主婦</span>
-      <p class="vc-txt">結婚に踏み切れずにいましたが、数字が「今が動き時」を示していると聞いて決断できました。今では幸せな毎日を送っています。</p>
-      <p class="vc-stars">★★★★★</p>
-    </div>
-    <div class="vc-card">
-      <span class="vc-age">40代 / フリーランス</span>
-      <p class="vc-txt">転職か独立か悩んでいました。星の配置と数字が同じ方向を示していて、迷いがなくなりました。思い切って独立して大正解でした。</p>
-      <p class="vc-stars">★★★★★</p>
-    </div>
-  </div>
-</section>
+  <main id="main">
+    <section class="section"><div class="measure"><p class="kicker">いま起きていること</p><h2>決められないまま、時間だけが過ぎていませんか</h2><div class="empathy-list">
+      <article class="empathy"><h3>連絡を待つか、自分から動くか決められない</h3><p>相手の反応が気になり、送る文章を考えては消すことを繰り返してしまう。</p></article>
+      <article class="empathy"><h3>復縁を期待してよいのか分からない</h3><p>少しの変化に期待しながらも、また傷つくのが怖くて次の行動を選べない。</p></article>
+      <article class="empathy"><h3>今の仕事を続けるか、転職するか決められない</h3><p>辞める不安と、このまま続ける不安の両方があり、何度考えても結論が変わる。</p></article>
+      <article class="empathy"><h3>人間関係の距離が変わった理由が分からない</h3><p>自分の言動が原因だったのか考え続け、どう接すればよいか分からなくなる。</p></article>
+      <article class="empathy"><h3>無料占いを見ても、自分の場合が分からない</h3><p>全体の傾向は参考になっても、今の関係や事情まで反映された答えは見つかりにくい。</p></article>
+    </div><p class="evidence-note">答えが出ないのは、考えが足りないからではありません。自分の状況に合った判断材料が、まだ足りていないことがあります。</p></div></section>
 
-<!-- ═══ FINAL CTA ═══ -->
-<section class="final">
-  <div class="divider"><div class="div-line"></div><div class="div-dot"></div><div class="div-line"></div></div>
-  <h2 class="final-h2">宇宙と数字が、<br>あなたへの答えを<br>用意しています</h2>
-  <p class="final-sub">その答えを、今夜受け取ってください。</p>
-  <div class="btn-wrap">
-    <a class="btn-green" style="font-size:.9rem;padding:1.1rem 2.8rem" href="https://page.line.me/608becez">▶ &nbsp;今すぐ無料で登録する</a>
-    <a class="btn-outline" href="https://page.line.me/608becez">占いライザ 公式LINE</a>
-  </div>
-  <span class="btn-note" style="text-align:center;margin-top:1.2rem">
-    登録無料 · いつでも退会可能 · 占いはエンターテインメント目的です
-  </span>
-</section>
+    <section class="section section--mist"><div class="wrap"><p class="kicker">相談できるテーマ</p><h2>ひとつの迷いから、複数の状況まで</h2><div class="topics"><div class="topic"><strong>恋愛・相手の気持ち</strong><span>片思い、関係の進め方、今の距離感</span></div><div class="topic"><strong>復縁・複雑な恋愛</strong><span>現在の状況と、考えたい選択肢</span></div><div class="topic"><strong>仕事・転職</strong><span>続けるか、別の道を考えるか</span></div><div class="topic"><strong>人間関係・今後の方向性</strong><span>迷いの背景と優先したいこと</span></div></div><p class="evidence-note">医療・法律・投資・ギャンブル・生命に関わる判断については、専門家の助言に代わるものではありません。</p></div></section>
 
-<footer>
-  <p>© 占いライザ &nbsp; All rights reserved.</p>
-</footer>
+    <section class="section"><div class="wrap turning"><blockquote class="pullquote">感情と事実を分けると、<br>次に確かめたいことが見えてきます。</blockquote><div><p class="kicker">同じ答えへ戻ってしまう理由</p><h2>相手の反応だけで考えると、自分の希望が見えにくくなります</h2><p>何度も同じことを考えているうちに、起きた事実と不安な想像が混ざり、焦って結論を出そうとすることがあります。</p><p>今どこで迷い、何を恐れ、本当はどうしたいのかを分けて整理することで、何を待つか、何を確認するか、今動くか、一度距離を置くかを考えやすくなります。</p></div></div></section>
 
+    <section class="section section--mist"><div class="measure"><p class="kicker">状況を整理する視点</p><h2>次の行動を選ぶために、先に整理すること</h2><p>同じ悩みを繰り返し考えるときは、次の項目を一つずつ分けることで、優先したい選択肢が見えやすくなります。</p><ul class="questions"><li>今、どこで迷っているのか</li><li>何を恐れて決められないのか</li><li>感情と、実際に起きている事実</li><li>今すぐ動くことと、待って確認すること</li><li>自分が本当はどうしたいと感じているのか</li></ul></div></section>
+
+    <section class="section"><div class="wrap service-sheet"><div class="service-seal" aria-hidden="true">占星術<br>×<br>数秘術<br><small>個別鑑定</small></div><div><p class="kicker">占いライザとは</p><h2>自分の場合に合わせた鑑定書を、PDFで受け取る</h2><p>生年月日や星座、現在の状況、相談内容をもとに、恋愛・仕事・人間関係などの迷いを整理した個別鑑定文を作成します。</p><p>PDF形式の鑑定書で受け取れるため、スマートフォンに保存して、気持ちが揺れたときや選択を考え直したいときにも読み返せます。未来や結果を断定せず、相談者本人の判断を尊重する鑑定サービスとして運営しています。</p></div></div></section>
+
+    <section class="section section--mist"><div class="measure"><p class="kicker">個別鑑定の特徴</p><h2>受け取った後も、判断に迷ったときに使える</h2><div class="facts"><div class="fact"><b>01</b><p>星座全体への一般論ではなく、生年月日や現在の状況、相談内容をもとに個別に作成します。</p></div><div class="fact"><b>02</b><p>PDF形式の鑑定書で届くため、スマートフォンに保存して、迷いが戻ったときにも読み返せます。</p></div><div class="fact"><b>03</b><p>一つの質問から、複数の悩みと今後の流れまで、必要な情報量に合わせて3プランから選べます。</p></div><div class="fact"><b>04</b><p>申込みから相談内容の送信、PDF鑑定書の受取りまでLINEで進められます。</p></div><div class="fact"><b>05</b><p>未来を決めつけず、次に何を確認し、どの選択肢を優先するかを考える材料として利用できます。</p></div></div></div></section>
+
+    <section class="section section--night"><div class="wrap"><p class="kicker">無料占いとの違い</p><h2>全体の運勢では足りないときに</h2><div class="compare"><article class="compare-col"><h3>無料の星座占い</h3><ul><li>星座全体の傾向を知る</li><li>毎日の行動のヒントにする</li><li>多くの人に共通する内容</li></ul></article><article class="compare-col compare-col--light"><h3>個別鑑定</h3><ul><li>現在の状況と相談内容を反映する</li><li>迷っている理由を分けて整理する</li><li>自分に合う選択肢を考える材料にする</li><li>判断に迷ったときに読み返せる</li></ul></article></div></div></section>
+
+    <section class="section"><div class="measure"><p class="kicker">発信と運営</p><h2>無料の運勢から、相談内容に合わせた個別鑑定まで</h2><p>InstagramとYouTubeで占いコンテンツを発信し、公式LINEでは12星座の無料運勢と3つの個別鑑定プランを案内しています。</p><p>個別鑑定は、生年月日、星座、現在の状況、相談したいことを受け取り、占星術と数秘術を用いたPDF鑑定書として届けます。</p><div class="channels"><a class="channel" data-social-link="instagram" href="#" rel="noopener noreferrer">Instagram</a><a class="channel" data-social-link="youtube" href="#" rel="noopener noreferrer">YouTube</a><a class="channel" data-line-link href="#" rel="noopener noreferrer">LINE公式アカウント</a></div></div></section>
+
+    <section class="section section--mist" id="plans"><div class="wrap"><div class="plans-intro"><p class="kicker">3つの個別鑑定</p><h2>価格ではなく、相談したい深さで選ぶ</h2><p class="lead">ひとつだけ確認したいのか、二つの視点を整理したいのか、今後の流れまで深く確認したいのか。必要な情報量に合わせて選べます。</p></div><div class="plans">
+      <article class="plan"><p class="plan-label">ひとつの悩みを、まず確認したい方</p><h3>お試し鑑定</h3><p class="plan-price">980円</p><p class="plan-for">一つの質問に絞って、現在の流れと次の行動を確認したいときに。</p><p class="plan-benefit">必要な情報を一つに絞るため、最初に何を考えるべきかを短く整理できます。</p><ul class="plan-spec"><li><span>文字数</span><b>約1,500文字</b></li><li><span>質問数</span><b>1つ</b></li><li><span>内容</span><b>運気・近い将来・助言</b></li><li><span>受取り</span><b>LINE（PDF）</b></li><li><span>納期</span><b>申込み時に案内</b></li></ul><a class="btn btn--primary" data-plan-link="trial" href="#" rel="noopener noreferrer" data-track="trial_cta">お試し鑑定を申し込む</a></article>
+      <article class="plan"><p class="plan-label">関連する二つの視点を整理したい方</p><h3>スタンダード鑑定</h3><p class="plan-price">2,000円</p><p class="plan-for">相手の気持ちと今後など、つながる二つの質問を一緒に整理したいときに。</p><p class="plan-benefit">一つの答えだけでなく、関連する状況を比べながら、次の選択を考えられます。</p><ul class="plan-spec"><li><span>文字数</span><b>約2,500文字</b></li><li><span>質問数</span><b>2つ</b></li><li><span>内容</span><b>占星術×数秘術</b></li><li><span>受取り</span><b>LINE（PDF）</b></li><li><span>納期</span><b>申込み時に案内</b></li></ul><a class="btn btn--primary" data-plan-link="standard" href="#" rel="noopener noreferrer" data-track="standard_cta">スタンダード鑑定を申し込む</a></article>
+      <article class="plan"><p class="plan-label">複数の悩みと今後の流れまで深く確認したい方</p><h3>プレミアム鑑定</h3><p class="plan-price">3,000円</p><p class="plan-for">三つの質問に加え、これから3か月の運気の流れまで確認したいときに。</p><p class="plan-benefit">複数の悩みを別々に見るだけでなく、今後の時間軸も含めて優先順位を整理できます。</p><ul class="plan-spec"><li><span>文字数</span><b>約3,500文字</b></li><li><span>質問数</span><b>3つ</b></li><li><span>内容</span><b>3か月の運気＋深い鑑定</b></li><li><span>受取り</span><b>LINE（PDF）</b></li><li><span>納期</span><b>申込み時に案内</b></li></ul><a class="btn btn--primary" data-plan-link="premium" href="#" rel="noopener noreferrer" data-track="premium_cta">プレミアム鑑定を申し込む</a></article>
+    </div></div></section>
+
+    <section class="section"><div class="measure"><p class="kicker">プランの選び方</p><h2>どこまで整理したいかで選べます</h2><div class="choice"><div class="choice-row"><b>一つだけ確認したい</b><p>相談を一つに絞り、まず現在の流れと次の行動を確認する。</p></div><div class="choice-row"><b>二つの関連する悩みを整理したい</b><p>相手の気持ちと今後など、つながる二つの視点を比べて考える。</p></div><div class="choice-row"><b>複数の悩みと今後の流れまで確認したい</b><p>三つの質問と3か月の流れから、何を優先するかを深く整理する。</p></div></div></div></section>
+
+    <section class="section section--mist"><div class="measure"><p class="kicker">申込みから受取りまで</p><h2>LINEの案内に沿って進みます</h2><div class="flow"><article class="flow-step"><h3>プランを選ぶ</h3><p>相談したい内容の深さと必要な情報量から選びます。</p></article><article class="flow-step"><h3>Stripeで決済する</h3><p>各プランの申込みボタンから決済ページへ進みます。</p></article><article class="flow-step"><h3>LINEへ相談内容を送る</h3><p>決済後、名前、生年月日、出生時間（分かれば）、星座、現在の状況、相談内容などを送ります。</p></article><article class="flow-step"><h3>PDF鑑定書をLINEで受け取る</h3><p>完成した鑑定書をPDFファイルで送付します。スマートフォンに保存して、必要なときに読み返せます。納期とPDFの開き方は、相談内容を確認した後にLINEで案内します。</p></article></div></div></section>
+
+    <section class="section"><div class="wrap"><p class="kicker">利用方針</p><h2>安心して判断するために</h2><div class="policy"><div class="policy-item"><strong>結果を断定しない</strong><p>未来を保証せず、選択を考えるための参考情報として届けます。</p></div><div class="policy-item"><strong>不安をあおらない</strong><p>恐怖や焦りを使って購入を迫る表現は行いません。</p></div><div class="policy-item"><strong>相談者の判断を尊重する</strong><p>最終的な選択を占いへ委ねるのではなく、自分で考えるために利用します。</p></div><div class="policy-item"><strong>専門家の代わりにしない</strong><p>医療・法律・投資など、専門家の判断が必要な内容の代替にはなりません。</p></div></div></div></section>
+
+    <section class="section section--mist" id="faq"><div class="measure"><p class="kicker">よくある質問</p><h2>申込み前に確認したいこと</h2><div class="faq">
+      <details><summary>どのプランを選べばよいですか？</summary><p>質問1つならお試し、2つならスタンダード、3つと3か月の流れまで確認したい場合はプレミアムが目安です。価格だけでなく、必要な質問数でお選びください。</p></details>
+      <details><summary>必ず当たりますか？</summary><p>未来や結果を保証するものではありません。現在の状況を整理し、自分で選択を考えるための参考情報としてご利用ください。</p></details>
+      <details><summary>どのような相談ができますか？</summary><p>恋愛、相手の気持ち、復縁、仕事、人間関係、今後の方向性などを想定しています。医療・法律・投資など専門判断が必要な相談には対応できません。</p></details>
+      <details><summary>鑑定結果はいつ、どのように届きますか？</summary><p>完成した鑑定書をPDFファイルで公式LINEから送付します。納期は、相談内容を確認した後にLINEで案内します。</p></details>
+      <details><summary>PDF鑑定書はスマートフォンでどう開きますか？</summary><p>iPhoneは、LINEに届いたPDFをタップすると表示できます。保存する場合は共有ボタンから「ファイルに保存」または「ブック」を選びます。Androidは、LINEに届いたPDFをタップしてダウンロードし、「ファイル」または「Files」アプリの「ダウンロード」から開きます。機種によって表示名が異なる場合があります。開けない場合は公式LINEへご連絡ください。</p></details>
+      <details><summary>キャンセルやクーリングオフはできますか？</summary><p>決済後、相談内容を公式LINEへ送信する前までは、公式LINEへの連絡によりキャンセルできます。相談内容の送信後は鑑定作成を開始するため、お客様都合によるキャンセルおよび返金には原則として応じません。重複決済、当サービスの責任による未提供、または申込み内容と異なるサービスが提供された場合は、確認のうえ返金または再提供します。本サービスは通信販売に該当するため、クーリングオフ制度は適用されません。詳しくは、特定商取引法に基づく表記をご確認ください。</p></details>
+      <details><summary>LINEは必要ですか？</summary><p>現在の運用では、決済後の相談内容送信とPDF鑑定書の受取りに公式LINEを使用します。</p></details>
+    </div></div></section>
+
+    <section class="section final"><div class="measure"><p class="kicker">最後に</p><h2>同じ悩みを繰り返し考える前に、<br>自分の場合に合った材料を受け取る</h2><p>誰かに未来を決めてもらうためではなく、感情と状況を分け、自分で次の選択を考えるための個別鑑定です。</p><p>一つの質問から、複数の悩みと3か月の流れまで。今必要な情報量に合わせて選べます。</p><a class="btn btn--primary" href="#plans" data-track="final_cta">今の悩みに合う鑑定を選ぶ</a></div></section>
+
+    <section class="section free"><div class="measure"><p class="kicker">無料で見たい方へ</p><h2>まずはLINEの運勢から</h2><p>公式LINEでは、星座別の運勢メッセージと個別鑑定の案内を確認できます。</p><a class="btn btn--line" data-line-link href="#" rel="noopener noreferrer" data-track="line_cta">占いライザ公式LINEを見る</a></div></section>
+  </main>
+
+  <footer><div class="wrap footer-grid"><div><div class="brand"><span class="brand-mark" aria-hidden="true">☾</span><span>占いライザ</span></div><p class="copyright">© 占いライザ All rights reserved.</p></div><nav class="footer-links" aria-label="フッター"><span>運営者情報（未確認）</span><a href="privacy.html">プライバシーポリシー</a><a href="tokusho.html">特定商取引法に基づく表記</a><span>利用規約（準備中）</span><a data-line-link href="#" rel="noopener noreferrer">公式LINEへ問い合わせる</a></nav></div></footer>
+  <aside class="sticky" aria-label="鑑定プランへの移動"><span><strong>3つの個別鑑定</strong>相談の深さで選べます</span><a class="btn btn--primary" href="#plans" data-track="sticky_cta">鑑定プランを見る</a></aside>
+
+  <script>
+    const SITE_CONFIG=Object.freeze({
+      officialLineUrl:"https://page.line.me/608becez",
+      social:Object.freeze({instagram:"https://instagram.com/uranai_raiza",youtube:"https://youtube.com/@uranairaiza"}),
+      plans:Object.freeze({
+        trial:"https://buy.stripe.com/6oU7sKcG40bmg9GcsTdMI02",
+        standard:"https://buy.stripe.com/5kQaEW49y0bm8He50rdMI03",
+        premium:"https://buy.stripe.com/aFa9AS6hG0bmaPmakLdMI06"
+      })
+    });
+    document.querySelectorAll("[data-line-link]").forEach(a=>a.href=SITE_CONFIG.officialLineUrl);
+    document.querySelectorAll("[data-social-link]").forEach(a=>a.href=SITE_CONFIG.social[a.dataset.socialLink]);
+    document.querySelectorAll("[data-plan-link]").forEach(a=>a.href=SITE_CONFIG.plans[a.dataset.planLink]);
+    function trackEvent(event,detail={}){const payload={event,...detail};if(Array.isArray(window.dataLayer))window.dataLayer.push(payload);window.dispatchEvent(new CustomEvent("raiza:analytics",{detail:payload}))}
+    document.addEventListener("click",e=>{const a=e.target.closest("[data-track]");if(a)trackEvent(a.dataset.track)});
+    document.querySelectorAll("[data-plan-link]").forEach(a=>a.addEventListener("click",()=>trackEvent("payment_outbound",{plan:a.dataset.planLink})));
+    document.querySelectorAll("details").forEach((d,i)=>d.addEventListener("toggle",()=>{if(d.open)trackEvent("faq_open",{faq_index:i+1})}));
+    const reached=new Set();addEventListener("scroll",()=>{const max=document.documentElement.scrollHeight-innerHeight;if(max<=0)return;const pct=Math.round(scrollY/max*100);[50,90].forEach(mark=>{if(pct>=mark&&!reached.has(mark)){reached.add(mark);trackEvent(`scroll_${mark}`)}})},{passive:true});
+    new IntersectionObserver(([e],o)=>{if(e.isIntersecting){trackEvent("plans_view");o.disconnect()}},{threshold:.25}).observe(document.querySelector("#plans"));
+    const sticky=document.querySelector(".sticky"),hero=document.querySelector(".hero"),footer=document.querySelector("footer");let pastHero=false,footerVisible=false;function updateSticky(){const show=innerWidth<760&&pastHero&&!footerVisible;sticky.classList.toggle("visible",show);document.body.classList.toggle("sticky-on",show)}new IntersectionObserver(([e])=>{pastHero=!e.isIntersecting;updateSticky()}).observe(hero);new IntersectionObserver(([e])=>{footerVisible=e.isIntersecting;updateSticky()}).observe(footer);addEventListener("resize",updateSticky);
+    if(new URLSearchParams(location.search).get("application")==="complete")trackEvent("application_complete");
+  </script>
 </body>
 </html>
