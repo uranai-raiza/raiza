@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="2048" viewBox="0 0 2048 2048">
+  <rect width="2048" height="2048" fill="#f8f3ea"/>
+  <circle cx="1024" cy="1024" r="914" fill="#f8f3ea" stroke="#17141d" stroke-width="24"/>
+  <path d="M570 610A440 440 0 1 0 973 1322A368 368 0 1 1 570 610Z" fill="#bd4039"/>
+  <text x="785" y="1080"
+        font-family="Georgia, 'Times New Roman', 'Yu Mincho', serif"
+        font-size="270" font-weight="700" letter-spacing="12"
+        fill="#17141d">RAIZA</text>
+  <path d="M790 1142H1640" stroke="#bd4039" stroke-width="18"/>
+  <text x="1215" y="1232"
+        font-family="Arial, 'Helvetica Neue', 'Yu Gothic', sans-serif"
+        font-size="54" letter-spacing="24" text-anchor="middle"
+        fill="#6f6769">ASTROLOGY</text>
+</svg>
